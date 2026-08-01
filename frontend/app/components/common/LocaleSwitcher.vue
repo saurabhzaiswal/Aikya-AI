@@ -67,7 +67,7 @@
 import { Check, ChevronDown, Globe2 } from 'lucide-vue-next'
 import { defineComponent } from 'vue'
 import type { LanguageGroupView } from '~/composables/useLanguageDetection'
-import type { UiLanguage, UiLocaleCode } from '~/i18n/language-registry'
+import { findUiLanguage, type UiLanguage } from '~/i18n/language-registry'
 
 export default defineComponent({
   name: 'LocaleSwitcher',
@@ -81,8 +81,10 @@ export default defineComponent({
     },
   },
   methods: {
-    async selectLanguage(code: UiLocaleCode): Promise<void> {
-      await this.$languagePreference.selectLocale(code)
+    async selectLanguage(code: string): Promise<void> {
+      const language = findUiLanguage(code)
+      if (!language) return
+      await this.$languagePreference.selectLocale(language.code)
       const details = this.$refs.details as HTMLDetailsElement | undefined
       if (details) details.open = false
     },

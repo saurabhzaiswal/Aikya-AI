@@ -12,9 +12,9 @@ Current goal: Complete Nuxt lint, type, build, SEO, and visual acceptance for th
 | Product scope | Green | MVP boundary documented and explicitly approved |
 | Architecture | Green | Modular-monolith blueprint and editable diagrams complete |
 | Documentation | Green | Architecture, API, operations, status, progress, and Phase 1 notes synchronized |
-| Frontend | Yellow | Browser-first 23-locale selector, grouped regional UX, cookie/account persistence, and English fallback are implemented; a clean CI/Linux Nuxt gate and visual review remain required |
+| Frontend | Yellow | Browser-first 23-locale selector passes local lint/typecheck after the CI-reported type correction; the GitHub rerun and visual review remain required |
 | Backend | Green | Python 3.14.6, UUIDv7 generation, Ruff, strict mypy, compile, and Alembic-head checks pass |
-| CI | Yellow | GitHub Actions workflow is locally YAML-validated for `master`; its first remote run remains pending and CD is intentionally absent |
+| CI | Yellow | First GitHub run exposed a widened locale type; the registry/type guard and job-level site URL are corrected, with the rerun pending; CD remains intentionally absent |
 | Infrastructure | Yellow | Development/production YAML parses; Docker runtime is unavailable on this machine |
 | Security/privacy | Yellow | Tenant checks, rotating sessions, limits, signed storage, validation, and fail-closed malware scanning implemented; deletion automation/final review remain |
 | Translation provider | Yellow | LibreTranslate-compatible adapter and synthetic integration pass; real provider credentials are not configured |

@@ -18,6 +18,8 @@ jobs:
     name: Nuxt quality and build
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      NUXT_PUBLIC_SITE_URL: https://example.invalid
     defaults:
       run:
         working-directory: frontend
@@ -37,8 +39,6 @@ jobs:
       - name: Type-check
         run: npm run typecheck
       - name: Build Nuxt production output
-        env:
-          NUXT_PUBLIC_SITE_URL: https://example.invalid
         run: npm run build
 
   backend:
@@ -93,4 +93,3 @@ jobs:
         run: docker build --target production --tag aikya-frontend:ci frontend
       - name: Build production backend image
         run: docker build --target production --tag aikya-backend:ci backend
-

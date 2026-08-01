@@ -107,7 +107,7 @@ AI agents must read this file before development. Check completed work, current 
 
 ### Phase completion
 
-- [x] Nuxt lint and typecheck pass
+- [x] Nuxt lint and typecheck pass — localization type correction verified locally; clean GitHub/Linux rerun pending
 - [x] Client/SSR compilation, 31-route prerendering, and generated-server HTTP/SEO smoke pass
 - [ ] Final Nitro dependency trace/container build completes — local Windows build exceeded timeout after generating functional output
 - [x] Backend static/import/migration checks pass
@@ -161,7 +161,8 @@ Notes:
 - Backend Ruff, strict mypy, compile, OpenAPI generation, Alembic upgrade, YAML parsing, link scan, credential-pattern scan, auth/text/PDF synthetic smokes, and clamd protocol smokes passed. The superseded Vite frontend passed its checks before the Nuxt migration; Nuxt acceptance remains open.
 - Nuxt lint and typecheck pass; generated Nitro routes pass HTTP, canonical, JSON-LD, health, and robots smoke checks. Production dependency audit reports zero known runtime vulnerabilities.
 - After ADR-015, Nuxt lint/typecheck pass on Node 24.18.0; Python 3.14.6 Ruff, strict mypy (36 files), compilation, Alembic-head, and live UUID-version checks pass. CI YAML, lock synchronization, and matching English/Hindi catalog keys pass local validation; first remote CI run remains pending.
-- ADR-016 localization JSON/registry checks pass. The post-change Nuxt lint/typecheck commands reached the same local Windows filesystem stall before emitting diagnostics, so the clean GitHub/Linux CI gate remains authoritative for this change.
+- ADR-016 localization JSON/registry checks pass. After correcting the CI-reported locale type boundary, the exact `npm run typecheck` command passes locally with the non-localhost CI site URL.
+- The first GitHub localization run caught Vue template widening of `language.code`. The registry now derives its public language type from literal data, the component validates event input through the registry, and the CI site URL applies to every frontend step; rerun evidence remains pending.
 
 ## Known issues
 

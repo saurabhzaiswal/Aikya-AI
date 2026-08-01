@@ -4,7 +4,7 @@ export type UiLanguageGroup = typeof UI_LANGUAGE_GROUPS[number]
 export type UiLanguageStatus = 'live' | 'preview'
 export type TextDirection = 'ltr' | 'rtl'
 
-export interface UiLanguage {
+interface UiLanguageDefinition {
   code: string
   language: string
   iso639_3: string
@@ -39,9 +39,10 @@ export const UI_LANGUAGES = [
   { code: 'mai', language: 'mai-IN', iso639_3: 'mai', englishName: 'Maithili', nativeName: 'मैथिली', direction: 'ltr', group: 'bihar', status: 'preview' },
   { code: 'vjk', language: 'vjk-IN', iso639_3: 'vjk', englishName: 'Bajjika', nativeName: 'बज्जिका', direction: 'ltr', group: 'bihar', status: 'preview' },
   { code: 'mag', language: 'mag-IN', iso639_3: 'mag', englishName: 'Magahi', nativeName: 'मगही', direction: 'ltr', group: 'bihar', status: 'preview' },
-] as const satisfies readonly UiLanguage[]
+] as const satisfies readonly UiLanguageDefinition[]
 
 export type UiLocaleCode = typeof UI_LANGUAGES[number]['code']
+export type UiLanguage = typeof UI_LANGUAGES[number]
 
 export const UI_LOCALE_CODES = UI_LANGUAGES.map(language => language.code) as UiLocaleCode[]
 export const INDIAN_LOCALE_CODES = UI_LANGUAGES
