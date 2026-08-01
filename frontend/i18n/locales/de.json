@@ -1,0 +1,7 @@
+{
+  "accessibility": { "mainNavigation": "Hauptnavigation", "mobileNavigation": "Mobile Navigation", "skipToContent": "Zum Inhalt springen", "toggleNavigation": "Navigation umschalten" },
+  "actions": { "signIn": "Anmelden", "signOut": "Abmelden", "startTranslating": "Übersetzung starten" },
+  "footer": { "description": "Ein fokussierter Sprach-Arbeitsbereich, unabhängig entwickelt von Saurabh Choudhary.", "founderGitHub": "Gründer auf GitHub", "legal": "Rechtliches", "product": "Produkt", "rights": "Alle Rechte vorbehalten." },
+  "locale": { "change": "Ändern", "current": "Aktuelle Sprache: {language}", "detected": "Sprache anhand der Browsereinstellung auf {language} gesetzt.", "groups": { "bihar": "❤️ Bihar", "global": "🌍 Global", "indian": "🇮🇳 Indien" }, "label": "Sprache", "preview": "Vorschau", "selectorTitle": "Sprache der Benutzeroberfläche wählen", "unsupported": "Keine unterstützte Browsersprache erkannt. Englisch wird verwendet." },
+  "nav": { "about": "Über uns", "blog": "Blog", "contact": "Kontakt", "docs": "Dokumentation", "features": "Funktionen", "pricing": "Preise", "privacy": "Datenschutzrichtlinie", "terms": "Nutzungsbedingungen" }
+}

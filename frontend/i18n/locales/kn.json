@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "ಸೈನ್ ಇನ್", "signOut": "ಸೈನ್ ಔಟ್", "startTranslating": "ಅನುವಾದ ಪ್ರಾರಂಭಿಸಿ" },
+  "locale": { "label": "ಭಾಷೆ" },
+  "nav": { "about": "ಪರಿಚಯ", "blog": "ಬ್ಲಾಗ್", "contact": "ಸಂಪರ್ಕ", "docs": "ದಾಖಲೆಗಳು", "features": "ವೈಶಿಷ್ಟ್ಯಗಳು", "pricing": "ಬೆಲೆ", "privacy": "ಗೌಪ್ಯತಾ ನೀತಿ", "terms": "ಸೇವಾ ನಿಯಮಗಳು" }
+}

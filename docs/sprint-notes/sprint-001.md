@@ -38,6 +38,7 @@ Completed on 2026-08-01:
 - Implemented the FastAPI modular backend, SQLAlchemy/Alembic data layer, rotating refresh sessions, tenant-scoped access, Redis rate limits, LibreTranslate-compatible adapter, signed S3 storage, Celery jobs, PyMuPDF extraction/readable export, and fail-closed ClamAV scan.
 - Replaced placeholder topology with development builds and a production reference for frontend, API, worker, migration, PostgreSQL, Redis, MinIO bucket initialization, and ClamAV.
 - Added the Node 24.18.x/Python 3.14 runtime contract, shared UUIDv7 persisted IDs, Nuxt i18n English/Hindi foundation, frontend memory-safety policy, operator runbook, and GitHub CI without CD.
+- Expanded localization to a browser-first 23-locale Global/Indian/Bihar registry with visible grouping, one-time feedback, cookie/account persistence, privacy rules, and safe catalog fallbacks.
 
 Verification evidence:
 

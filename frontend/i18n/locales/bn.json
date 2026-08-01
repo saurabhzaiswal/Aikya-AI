@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "সাইন ইন", "signOut": "সাইন আউট", "startTranslating": "অনুবাদ শুরু করুন" },
+  "locale": { "label": "ভাষা" },
+  "nav": { "about": "পরিচয়", "blog": "ব্লগ", "contact": "যোগাযোগ", "docs": "ডকুমেন্টেশন", "features": "বৈশিষ্ট্য", "pricing": "মূল্য", "privacy": "গোপনীয়তা নীতি", "terms": "পরিষেবার শর্তাবলি" }
+}

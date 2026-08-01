@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "ਸਾਈਨ ਇਨ", "signOut": "ਸਾਈਨ ਆਉਟ", "startTranslating": "ਅਨੁਵਾਦ ਸ਼ੁਰੂ ਕਰੋ" },
+  "locale": { "label": "ਭਾਸ਼ਾ" },
+  "nav": { "about": "ਬਾਰੇ", "blog": "ਬਲੌਗ", "contact": "ਸੰਪਰਕ", "docs": "ਦਸਤਾਵੇਜ਼", "features": "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ", "pricing": "ਕੀਮਤਾਂ", "privacy": "ਗੋਪਨੀਯਤਾ ਨੀਤੀ", "terms": "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ" }
+}

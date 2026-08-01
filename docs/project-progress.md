@@ -68,7 +68,7 @@ AI agents must read this file before development. Check completed work, current 
 - [x] Tailwind CSS and SCSS design-token system
 - [x] Pinia, typed Axios services, Nuxt Content, SEO metadata, sitemap, and robots rules
 - [x] Responsive public site and workspace shell, dark mode, and accessibility baseline
-- [x] Official Nuxt i18n foundation with English fallback, Hindi catalog, locale switcher, and locale SEO head
+- [x] Browser-first Nuxt i18n foundation with a 23-locale Global/Indian/Bihar registry, grouped switcher, one-time notice, account/cookie persistence, and English fallback
 - [x] Frontend memory-safety ownership and profiling policy
 
 ### Backend foundation
@@ -145,13 +145,14 @@ Completed:
 - Unified Nuxt 4 application with SSR public pages, SEO/content routes, and an Options API dashboard for authentication, text translation, and the PDF workflow.
 - FastAPI modular backend with personal tenancy, rotating sessions, rate limits, provider adapter, signed storage, durable jobs, PDF extraction/rendering, and malware scan.
 - Real development/production container definitions, lockfiles, initial migration, and static/build/synthetic smoke verification.
-- Node.js 24.18.x/Python 3.14 baselines, UUIDv7 ORM identifiers, Nuxt i18n English/Hindi foundation, memory-safety rules, root runbook, and GitHub Actions CI.
+- Node.js 24.18.x/Python 3.14 baselines, UUIDv7 ORM identifiers, browser-first 23-locale Nuxt i18n foundation, memory-safety rules, root runbook, and GitHub Actions CI.
 
 Changed:
 
 - Reconciled the web stack to Nuxt 4 with Vue 3 Options API components and a FastAPI modular monolith.
 - Limited current implementation to the Phase 1 MVP.
 - Replaced ORM UUIDv4 defaults with the shared Python 3.14 UUIDv7 generator while retaining UUIDv4 only for non-persisted request/JWT correlation values.
+- Added account/cookie/browser locale priority, Global/Indian/Bihar grouping, Bihar-aware presentation, non-blocking first-visit feedback, and account locale synchronization without IP geolocation.
 
 Notes:
 
@@ -160,6 +161,7 @@ Notes:
 - Backend Ruff, strict mypy, compile, OpenAPI generation, Alembic upgrade, YAML parsing, link scan, credential-pattern scan, auth/text/PDF synthetic smokes, and clamd protocol smokes passed. The superseded Vite frontend passed its checks before the Nuxt migration; Nuxt acceptance remains open.
 - Nuxt lint and typecheck pass; generated Nitro routes pass HTTP, canonical, JSON-LD, health, and robots smoke checks. Production dependency audit reports zero known runtime vulnerabilities.
 - After ADR-015, Nuxt lint/typecheck pass on Node 24.18.0; Python 3.14.6 Ruff, strict mypy (36 files), compilation, Alembic-head, and live UUID-version checks pass. CI YAML, lock synchronization, and matching English/Hindi catalog keys pass local validation; first remote CI run remains pending.
+- ADR-016 localization JSON/registry checks pass. The post-change Nuxt lint/typecheck commands reached the same local Windows filesystem stall before emitting diagnostics, so the clean GitHub/Linux CI gate remains authoritative for this change.
 
 ## Known issues
 

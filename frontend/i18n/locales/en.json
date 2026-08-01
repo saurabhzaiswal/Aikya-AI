@@ -6,6 +6,7 @@
     "toggleNavigation": "Toggle navigation"
   },
   "actions": {
+    "dismiss": "Dismiss",
     "signIn": "Sign in",
     "signOut": "Sign out",
     "startTranslating": "Start translating"
@@ -18,7 +19,18 @@
     "rights": "All rights reserved."
   },
   "locale": {
-    "label": "Language"
+    "change": "Change",
+    "current": "Current language: {language}",
+    "detected": "Language set to {language} from your browser preference.",
+    "groups": {
+      "bihar": "❤️ Bihar",
+      "global": "🌍 Global",
+      "indian": "🇮🇳 Indian"
+    },
+    "label": "Language",
+    "preview": "Preview",
+    "selectorTitle": "Choose your interface language",
+    "unsupported": "We couldn't detect a supported browser language. English is being used."
   },
   "nav": {
     "about": "About",

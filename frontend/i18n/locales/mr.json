@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "साइन इन", "signOut": "साइन आउट", "startTranslating": "भाषांतर सुरू करा" },
+  "locale": { "label": "भाषा" },
+  "nav": { "about": "आमच्याबद्दल", "blog": "ब्लॉग", "contact": "संपर्क", "docs": "दस्तऐवजीकरण", "features": "वैशिष्ट्ये", "pricing": "किंमत", "privacy": "गोपनीयता धोरण", "terms": "सेवा अटी" }
+}

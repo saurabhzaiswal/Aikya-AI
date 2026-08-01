@@ -7,7 +7,7 @@ Authentication: short-lived bearer access token plus rotating HttpOnly refresh c
 
 ### `POST /register`
 
-Accepts email, password, and display name. Creates a user plus personal organization/workspace transactionally. Returns public user, organization/workspace context, and access token; sets refresh cookie. Duplicate email returns a generic conflict without disclosing unnecessary state.
+Accepts email, password, display name, and an optional BCP 47 locale (default `en`). Creates a user plus personal organization/workspace transactionally. Returns public user, organization/workspace context, and access token; sets refresh cookie. Duplicate email returns a generic conflict without disclosing unnecessary state.
 
 ### `POST /login`
 
@@ -24,6 +24,10 @@ Revokes the current refresh session, clears cookie, and returns `204`. The opera
 ### `GET /me`
 
 Requires access token. Returns user, active personal organization, and workspace summary.
+
+### `PATCH /me/locale`
+
+Requires access token. Accepts `{ "locale": "hi" }`, persists the validated locale preference on the current user, and returns the updated public user. It stores no IP address or inferred location.
 
 ## Security contract
 

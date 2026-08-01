@@ -45,6 +45,7 @@ See the [technical architecture](docs/04-architecture.md) and editable [architec
 ## Technology stack
 
 - Web: Node.js 24.18.x, Nuxt 4, Vue 3 Options API for stateful UI, TypeScript, Pinia, Nuxt i18n, Tailwind CSS, SCSS, Nuxt Content, and structured SEO metadata.
+- Localization: browser-first, privacy-conscious 23-locale Global/Indian/Bihar selector, account/cookie persistence, and English-safe catalog fallback; non-English catalogs remain Preview pending native-speaker review.
 - Backend: Python 3.14+, FastAPI, SQLAlchemy, Alembic, and application-generated UUIDv7 entity identifiers.
 - Data: PostgreSQL, Redis, S3-compatible object storage.
 - Jobs: Celery with durable PostgreSQL state and transactional outbox.

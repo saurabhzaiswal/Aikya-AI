@@ -14,5 +14,6 @@
 - Recorded passing Nuxt lint/typecheck, client and SSR compilation, 31-route prerendering, and generated Nitro HTTP/SEO smoke checks. Final dependency tracing/container packaging remains open because the local Windows build exceeded its timeout.
 - Validated all Compose YAML and frontend manifest syntax, repository-relative Markdown links, Options API component enforcement, service-only API access, and a zero-vulnerability production dependency audit.
 - Accepted ADR-015 and added Python 3.14/native UUIDv7 persistence, Node 24.18.x, official Nuxt i18n English fallback/Hindi routing, frontend lifecycle memory-safety rules, a canonical runbook, and CI-only GitHub Actions validation for `master`.
+- Accepted ADR-016 and added the 23-locale Global/Indian/Bihar registry, browser-first one-time detection, grouped language switcher, Preview/fallback policy, and authenticated locale persistence without IP geolocation.
 
 This file records engineering-foundation history. User/developer-visible release changes belong in the root `CHANGELOG.md`.

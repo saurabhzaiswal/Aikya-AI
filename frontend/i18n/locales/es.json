@@ -1,0 +1,7 @@
+{
+  "accessibility": { "mainNavigation": "Navegación principal", "mobileNavigation": "Navegación móvil", "skipToContent": "Ir al contenido", "toggleNavigation": "Alternar navegación" },
+  "actions": { "signIn": "Iniciar sesión", "signOut": "Cerrar sesión", "startTranslating": "Empezar a traducir" },
+  "footer": { "description": "Un espacio de trabajo lingüístico creado de forma independiente por Saurabh Choudhary.", "founderGitHub": "Fundador en GitHub", "legal": "Legal", "product": "Producto", "rights": "Todos los derechos reservados." },
+  "locale": { "change": "Cambiar", "current": "Idioma actual: {language}", "detected": "Idioma configurado en {language} según la preferencia del navegador.", "groups": { "bihar": "❤️ Bihar", "global": "🌍 Global", "indian": "🇮🇳 India" }, "label": "Idioma", "preview": "Vista previa", "selectorTitle": "Elige el idioma de la interfaz", "unsupported": "No pudimos detectar un idioma compatible. Se usará inglés." },
+  "nav": { "about": "Acerca de", "blog": "Blog", "contact": "Contacto", "docs": "Documentación", "features": "Funciones", "pricing": "Precios", "privacy": "Política de privacidad", "terms": "Términos del servicio" }
+}

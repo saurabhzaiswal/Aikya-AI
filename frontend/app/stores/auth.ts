@@ -18,6 +18,7 @@ export const useAuthStore = defineStore('auth', {
       useNuxtApp().$services.api.setAccessToken(auth.access_token)
       this.user = auth.user
       this.context = auth.context
+      void useNuxtApp().$languagePreference.applyAccountLocale(auth.user.locale)
     },
     clearAuth(): void {
       useNuxtApp().$services.api.setAccessToken(null)
@@ -40,9 +41,12 @@ export const useAuthStore = defineStore('auth', {
       this.applyAuth(await useNuxtApp().$services.auth.login(email, password))
       this.initialized = true
     },
-    async register(displayName: string, email: string, password: string): Promise<void> {
-      this.applyAuth(await useNuxtApp().$services.auth.register(displayName, email, password))
+    async register(displayName: string, email: string, password: string, locale: string): Promise<void> {
+      this.applyAuth(await useNuxtApp().$services.auth.register(displayName, email, password, locale))
       this.initialized = true
+    },
+    async updateLocale(locale: string): Promise<void> {
+      this.user = await useNuxtApp().$services.auth.updateLocale(locale)
     },
     async logout(): Promise<void> {
       try {

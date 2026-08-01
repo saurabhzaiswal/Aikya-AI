@@ -4,8 +4,15 @@ from sqlalchemy.orm import Session
 from app.config import get_settings
 from app.database import get_db
 from app.modules.identity.dependencies import CurrentPrincipal, get_current_principal
-from app.modules.identity.schemas import AuthResponse, LoginRequest, MeResponse, RegisterRequest
-from app.modules.identity.service import get_me, login, logout, refresh, register
+from app.modules.identity.schemas import (
+    AuthResponse,
+    LocaleUpdateRequest,
+    LoginRequest,
+    MeResponse,
+    RegisterRequest,
+    UserResponse,
+)
+from app.modules.identity.service import get_me, login, logout, refresh, register, update_locale
 from app.platform.errors import AppError
 from app.platform.rate_limit import check_rate_limit
 
@@ -39,7 +46,9 @@ def register_user(
         limit=settings.AUTH_REGISTER_LIMIT,
         window_seconds=settings.AUTH_RATE_WINDOW_SECONDS,
     )
-    auth, refresh_token = register(db, payload.email, payload.password, payload.display_name)
+    auth, refresh_token = register(
+        db, payload.email, payload.password, payload.display_name, payload.locale
+    )
     set_refresh_cookie(response, refresh_token)
     return auth
 
@@ -92,3 +101,12 @@ def current_user(
     db: Session = Depends(get_db),
 ) -> MeResponse:
     return get_me(db, principal.user, principal.organization_id)
+
+
+@router.patch("/me/locale", response_model=UserResponse)
+def change_locale(
+    payload: LocaleUpdateRequest,
+    principal: CurrentPrincipal = Depends(get_current_principal),
+    db: Session = Depends(get_db),
+) -> UserResponse:
+    return update_locale(db, principal.user, payload.locale)

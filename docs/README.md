@@ -24,6 +24,10 @@ Founder and governance context: [founder profile](00-founder-profile.md), [proje
 
 The original [technical blueprint](01-technical-blueprint.md) is retained as the source synthesis. The numbered documents decompose and refine it; when a contradiction appears, create an ADR and update both the relevant focused document and its links.
 
+Cross-cutting implementation guidance includes [localization architecture](localization.md) and [frontend memory safety](frontend-memory-safety.md).
+
+Cross-cutting implementation guidance includes [localization architecture](localization.md) and [frontend memory safety](frontend-memory-safety.md).
+
 ## Diagrams
 
 Editable Excalidraw sources live in [`diagrams/`](diagrams/). They are architecture sources, not decorative exports. Update the `.excalidraw` file when the design changes; generated PNG/SVG files must never become the only source.

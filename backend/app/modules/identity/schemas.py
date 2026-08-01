@@ -7,6 +7,7 @@ class RegisterRequest(BaseModel):
     email: EmailStr
     password: str = Field(min_length=12, max_length=128)
     display_name: str = Field(min_length=2, max_length=120)
+    locale: str = Field(default="en", min_length=2, max_length=35, pattern=r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 
     @field_validator("password")
     @classmethod
@@ -27,6 +28,10 @@ class RegisterRequest(BaseModel):
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str = Field(min_length=1, max_length=128)
+
+
+class LocaleUpdateRequest(BaseModel):
+    locale: str = Field(min_length=2, max_length=35, pattern=r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 
 
 class UserResponse(BaseModel):

@@ -1,0 +1,7 @@
+{
+  "accessibility": { "mainNavigation": "メインナビゲーション", "mobileNavigation": "モバイルナビゲーション", "skipToContent": "コンテンツへ移動", "toggleNavigation": "ナビゲーションを切り替える" },
+  "actions": { "signIn": "ログイン", "signOut": "ログアウト", "startTranslating": "翻訳を開始" },
+  "footer": { "description": "Saurabh Choudhary が独立して開発した言語ワークスペースです。", "founderGitHub": "GitHub の創設者", "legal": "法的情報", "product": "製品", "rights": "無断転載を禁じます。" },
+  "locale": { "change": "変更", "current": "現在の言語：{language}", "detected": "ブラウザーの設定に基づき、言語を{language}に設定しました。", "groups": { "bihar": "❤️ ビハール", "global": "🌍 グローバル", "indian": "🇮🇳 インド" }, "label": "言語", "preview": "プレビュー", "selectorTitle": "インターフェース言語を選択", "unsupported": "対応するブラウザー言語を検出できなかったため、英語を使用します。" },
+  "nav": { "about": "概要", "blog": "ブログ", "contact": "お問い合わせ", "docs": "ドキュメント", "features": "機能", "pricing": "料金", "privacy": "プライバシーポリシー", "terms": "利用規約" }
+}

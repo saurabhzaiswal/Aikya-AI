@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "ছাইন ইন", "signOut": "ছাইন আউট", "startTranslating": "অনুবাদ আৰম্ভ কৰক" },
+  "locale": { "label": "ভাষা" },
+  "nav": { "about": "পৰিচয়", "blog": "ব্লগ", "contact": "যোগাযোগ", "docs": "নথিপত্ৰ", "features": "বৈশিষ্ট্য", "pricing": "মূল্য", "privacy": "গোপনীয়তা নীতি", "terms": "সেৱাৰ চৰ্তসমূহ" }
+}

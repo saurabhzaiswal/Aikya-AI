@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "साइन इन", "signOut": "साइन आउट", "startTranslating": "अनुवाद शुरू करीं" },
+  "locale": { "label": "भाषा" },
+  "nav": { "about": "हमनी के बारे में", "blog": "ब्लॉग", "contact": "संपर्क", "docs": "दस्तावेज", "features": "खासियत", "pricing": "दाम", "privacy": "गोपनीयता नीति", "terms": "सेवा के शर्त" }
+}

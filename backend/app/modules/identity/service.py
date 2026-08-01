@@ -67,7 +67,9 @@ def _create_session(
     return raw_token, record
 
 
-def register(db: Session, email: str, password: str, display_name: str) -> tuple[AuthResponse, str]:
+def register(
+    db: Session, email: str, password: str, display_name: str, locale: str = "en"
+) -> tuple[AuthResponse, str]:
     normalized_email = normalize_email(email)
     if db.scalar(select(User.id).where(User.email == normalized_email)) is not None:
         raise AppError(
@@ -78,6 +80,7 @@ def register(db: Session, email: str, password: str, display_name: str) -> tuple
         email=normalized_email,
         display_name=display_name.strip(),
         password_hash=hash_password(password),
+        locale=locale.lower(),
     )
     organization = Organization(
         name=f"{display_name.strip()}'s Workspace", slug=make_slug(display_name)
@@ -195,3 +198,10 @@ def get_me(db: Session, user: User, organization_id: UUID) -> MeResponse:
             workspace_name=workspace.name,
         ),
     )
+
+
+def update_locale(db: Session, user: User, locale: str) -> UserResponse:
+    user.locale = locale.lower()
+    db.commit()
+    db.refresh(user)
+    return UserResponse.model_validate(user)

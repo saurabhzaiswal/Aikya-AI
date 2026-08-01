@@ -12,7 +12,7 @@ Current goal: Complete Nuxt lint, type, build, SEO, and visual acceptance for th
 | Product scope | Green | MVP boundary documented and explicitly approved |
 | Architecture | Green | Modular-monolith blueprint and editable diagrams complete |
 | Documentation | Green | Architecture, API, operations, status, progress, and Phase 1 notes synchronized |
-| Frontend | Yellow | Nuxt i18n English/Hindi foundation passes lint and typecheck on Node 24.18; production/container build still requires the CI/Linux gate |
+| Frontend | Yellow | Browser-first 23-locale selector, grouped regional UX, cookie/account persistence, and English fallback are implemented; a clean CI/Linux Nuxt gate and visual review remain required |
 | Backend | Green | Python 3.14.6, UUIDv7 generation, Ruff, strict mypy, compile, and Alembic-head checks pass |
 | CI | Yellow | GitHub Actions workflow is locally YAML-validated for `master`; its first remote run remains pending and CD is intentionally absent |
 | Infrastructure | Yellow | Development/production YAML parses; Docker runtime is unavailable on this machine |
@@ -40,7 +40,7 @@ Excluded: OCR, AI enhancement, audio, resume tools, extension, mobile, desktop, 
 
 ## Last major change
 
-Established Node.js 24.18.x/Python 3.14 runtime baselines, UUIDv7 ORM entity IDs, Nuxt i18n with English fallback and Hindi locale routing, frontend memory-safety policy, GitHub master-branch CI, and the root laptop/production runbook under ADR-015.
+Established the browser-first 23-locale Global/Indian/Bihar preference system, one-time notice, grouped switcher, account persistence, privacy boundary, and English-safe Preview policy under ADR-016.
 
 ## Next checkpoint
 

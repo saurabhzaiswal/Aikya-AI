@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "साइन इन", "signOut": "साइन आउट", "startTranslating": "अनुवाद शुरू करू" },
+  "locale": { "label": "भाषा" },
+  "nav": { "about": "हमरा सभक परिचय", "blog": "ब्लॉग", "contact": "संपर्क", "docs": "दस्तावेज", "features": "विशेषता", "pricing": "मूल्य", "privacy": "गोपनीयता नीति", "terms": "सेवाक शर्त" }
+}

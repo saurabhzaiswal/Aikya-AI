@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
+import { NUXT_I18N_LOCALES } from './app/i18n/language-registry'
 
 const publicSiteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:5173'
 const modules = [
@@ -80,14 +81,12 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     defaultDirection: 'ltr',
     strategy: 'prefix_except_default',
-    locales: [
-      { code: 'en', name: 'English', language: 'en-US', dir: 'ltr', file: 'en.json' },
-      { code: 'hi', name: 'हिन्दी', language: 'hi-IN', dir: 'ltr', file: 'hi.json' },
-    ],
+    locales: NUXT_I18N_LOCALES,
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'aikya_locale',
       redirectOn: 'root',
+      fallbackLocale: 'en',
     },
     vueI18n: './i18n.config.ts',
     experimental: {

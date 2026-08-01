@@ -1,0 +1,7 @@
+{
+  "accessibility": { "mainNavigation": "主导航", "mobileNavigation": "移动导航", "skipToContent": "跳转到内容", "toggleNavigation": "切换导航" },
+  "actions": { "signIn": "登录", "signOut": "退出登录", "startTranslating": "开始翻译" },
+  "footer": { "description": "由 Saurabh Choudhary 独立创建的专注型语言工作空间。", "founderGitHub": "GitHub 上的创始人", "legal": "法律信息", "product": "产品", "rights": "保留所有权利。" },
+  "locale": { "change": "更改", "current": "当前语言：{language}", "detected": "已根据浏览器偏好将语言设置为{language}。", "groups": { "bihar": "❤️ 比哈尔", "global": "🌍 全球", "indian": "🇮🇳 印度" }, "label": "语言", "preview": "预览", "selectorTitle": "选择界面语言", "unsupported": "未检测到受支持的浏览器语言，将使用英语。" },
+  "nav": { "about": "关于我们", "blog": "博客", "contact": "联系我们", "docs": "文档", "features": "功能", "pricing": "价格", "privacy": "隐私政策", "terms": "服务条款" }
+}

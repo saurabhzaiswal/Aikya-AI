@@ -136,7 +136,7 @@ Honor system preference initially and persist user override. Test every semantic
 
 All UI strings use message keys with interpolation and plural rules. Never concatenate translated fragments. Language names appear in the user's UI locale plus native form when useful. Dates/numbers/currency use locale libraries; database/API values remain canonical. Screenshots and pseudo-localization test expansion before real localization.
 
-English is the complete fallback catalog. Missing translated keys fall back through Vue i18n rather than ad hoc template expressions such as `translatedValue || 'English text'`, because missing-key behavior and plural/interpolation rules must remain centralized. Phase 1 configures English and Hindi with locale-aware public routes and SEO language metadata; additional locale catalogs are added only when reviewed.
+English is the complete fallback catalog. Missing translated keys fall back through Nuxt i18n rather than ad hoc template expressions such as `translatedValue || 'English text'`, because missing-key behavior and plural/interpolation rules must remain centralized. Phase 1 exposes the 23-locale Global/Indian/Bihar registry described in [`localization.md`](localization.md); incomplete catalogs are marked Preview until native-speaker review.
 
 Frontend lifecycle resources follow [`frontend-memory-safety.md`](frontend-memory-safety.md). Unexplained retained components, detached DOM nodes, orphan listeners/timers, unbounded stores/caches, or monotonic heap growth are release blockers.
 

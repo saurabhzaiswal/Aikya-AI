@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "ସାଇନ୍ ଇନ୍", "signOut": "ସାଇନ୍ ଆଉଟ୍", "startTranslating": "ଅନୁବାଦ ଆରମ୍ଭ କରନ୍ତୁ" },
+  "locale": { "label": "ଭାଷା" },
+  "nav": { "about": "ପରିଚୟ", "blog": "ବ୍ଲଗ୍", "contact": "ସମ୍ପର୍କ", "docs": "ଡକ୍ୟୁମେଣ୍ଟେସନ୍", "features": "ବୈଶିଷ୍ଟ୍ୟ", "pricing": "ମୂଲ୍ୟ", "privacy": "ଗୋପନୀୟତା ନୀତି", "terms": "ସେବା ସର୍ତ୍ତାବଳୀ" }
+}

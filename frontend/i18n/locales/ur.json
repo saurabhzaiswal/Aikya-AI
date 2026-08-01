@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "سائن ان", "signOut": "سائن آؤٹ", "startTranslating": "ترجمہ شروع کریں" },
+  "locale": { "label": "زبان" },
+  "nav": { "about": "تعارف", "blog": "بلاگ", "contact": "رابطہ", "docs": "دستاویزات", "features": "خصوصیات", "pricing": "قیمتیں", "privacy": "رازداری کی پالیسی", "terms": "سروس کی شرائط" }
+}

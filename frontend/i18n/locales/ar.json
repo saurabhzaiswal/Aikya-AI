@@ -1,0 +1,7 @@
+{
+  "accessibility": { "mainNavigation": "التنقل الرئيسي", "mobileNavigation": "التنقل عبر الهاتف", "skipToContent": "الانتقال إلى المحتوى", "toggleNavigation": "تبديل التنقل" },
+  "actions": { "signIn": "تسجيل الدخول", "signOut": "تسجيل الخروج", "startTranslating": "ابدأ الترجمة" },
+  "footer": { "description": "مساحة عمل لغوية أنشأها سوراب تشودري بشكل مستقل.", "founderGitHub": "المؤسس على GitHub", "legal": "قانوني", "product": "المنتج", "rights": "جميع الحقوق محفوظة." },
+  "locale": { "change": "تغيير", "current": "اللغة الحالية: {language}", "detected": "تم ضبط اللغة على {language} وفق تفضيل المتصفح.", "groups": { "bihar": "❤️ بيهار", "global": "🌍 عالمي", "indian": "🇮🇳 هندي" }, "label": "اللغة", "preview": "معاينة", "selectorTitle": "اختر لغة الواجهة", "unsupported": "لم نتمكن من اكتشاف لغة مدعومة. سيتم استخدام الإنجليزية." },
+  "nav": { "about": "حول", "blog": "المدونة", "contact": "اتصل بنا", "docs": "التوثيق", "features": "الميزات", "pricing": "الأسعار", "privacy": "سياسة الخصوصية", "terms": "شروط الخدمة" }
+}

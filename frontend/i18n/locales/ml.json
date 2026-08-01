@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "സൈൻ ഇൻ", "signOut": "സൈൻ ഔട്ട്", "startTranslating": "വിവർത്തനം ആരംഭിക്കുക" },
+  "locale": { "label": "ഭാഷ" },
+  "nav": { "about": "ഞങ്ങളെക്കുറിച്ച്", "blog": "ബ്ലോഗ്", "contact": "ബന്ധപ്പെടുക", "docs": "ഡോക്യുമെന്റേഷൻ", "features": "സവിശേഷതകൾ", "pricing": "വില", "privacy": "സ്വകാര്യതാ നയം", "terms": "സേവന നിബന്ധനകൾ" }
+}

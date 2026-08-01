@@ -74,6 +74,8 @@ Worker network policy allows only required storage/database/queue endpoints and 
 
 ## Privacy lifecycle
 
+First-visit language selection uses account preference, a locale cookie, and `Accept-Language`/browser locale. Phase 1 performs no IP geolocation and does not retain location for localization. Explicit language choices must never be silently overwritten.
+
 - Collect only data required for the chosen action.
 - Allow temporary processing without indefinite storage.
 - Associate each artifact with purpose, retention class, expiry, and lineage.

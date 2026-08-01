@@ -1,0 +1,5 @@
+{
+  "actions": { "signIn": "సైన్ ఇన్", "signOut": "సైన్ అవుట్", "startTranslating": "అనువాదం ప్రారంభించండి" },
+  "locale": { "label": "భాష" },
+  "nav": { "about": "పరిచయం", "blog": "బ్లాగ్", "contact": "సంప్రదించండి", "docs": "డాక్యుమెంటేషన్", "features": "ఫీచర్లు", "pricing": "ధరలు", "privacy": "గోప్యతా విధానం", "terms": "సేవా నిబంధనలు" }
+}

@@ -106,7 +106,7 @@ export default defineComponent({
       this.loading = true
       this.error = ''
       try {
-        await useAuthStore().register(this.displayName, this.email, this.password)
+        await useAuthStore().register(this.displayName, this.email, this.password, this.$i18n.locale)
         await navigateTo('/app/dashboard')
       }
       catch (error) {
