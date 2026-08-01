@@ -1,0 +1,33 @@
+{
+  "accessibility": {
+    "mainNavigation": "मुख्य नेविगेशन",
+    "mobileNavigation": "मोबाइल नेविगेशन",
+    "skipToContent": "मुख्य सामग्री पर जाएँ",
+    "toggleNavigation": "नेविगेशन खोलें या बंद करें"
+  },
+  "actions": {
+    "signIn": "साइन इन",
+    "signOut": "साइन आउट",
+    "startTranslating": "अनुवाद शुरू करें"
+  },
+  "footer": {
+    "description": "सौरभ चौधरी द्वारा स्वतंत्र रूप से बनाया गया एक केंद्रित भाषा कार्यक्षेत्र।",
+    "founderGitHub": "GitHub पर संस्थापक",
+    "legal": "कानूनी",
+    "product": "उत्पाद",
+    "rights": "सर्वाधिकार सुरक्षित।"
+  },
+  "locale": {
+    "label": "भाषा"
+  },
+  "nav": {
+    "about": "परिचय",
+    "blog": "ब्लॉग",
+    "contact": "संपर्क",
+    "docs": "दस्तावेज़",
+    "features": "विशेषताएँ",
+    "pricing": "मूल्य",
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें"
+  }
+}

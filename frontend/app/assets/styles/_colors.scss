@@ -1,0 +1,41 @@
+:root {
+  color-scheme: light;
+  --aikya-color-canvas: #f8f8fc;
+  --aikya-color-surface: #ffffff;
+  --aikya-color-surface-raised: #ffffff;
+  --aikya-color-ink: #191925;
+  --aikya-color-muted: #66667a;
+  --aikya-color-subtle: #ececf4;
+  --aikya-color-border: #ddddea;
+  --aikya-color-brand: #5147e5;
+  --aikya-color-brand-strong: #3f36c7;
+  --aikya-color-brand-soft: #eeecff;
+  --aikya-color-accent: #0d9488;
+  --aikya-color-accent-soft: #e7faf6;
+  --aikya-color-success: #16835d;
+  --aikya-color-warning: #b05d08;
+  --aikya-color-danger: #c43d4b;
+  --aikya-color-on-brand: #ffffff;
+  --aikya-color-grid: rgb(81 71 229 / 7%);
+}
+
+.dark {
+  color-scheme: dark;
+  --aikya-color-canvas: #0c0c12;
+  --aikya-color-surface: #15151f;
+  --aikya-color-surface-raised: #1b1b27;
+  --aikya-color-ink: #f6f5fb;
+  --aikya-color-muted: #aaa9bc;
+  --aikya-color-subtle: #242433;
+  --aikya-color-border: #313142;
+  --aikya-color-brand: #9289ff;
+  --aikya-color-brand-strong: #aea8ff;
+  --aikya-color-brand-soft: #25214c;
+  --aikya-color-accent: #54d7c8;
+  --aikya-color-accent-soft: #143b37;
+  --aikya-color-success: #67d6a8;
+  --aikya-color-warning: #f6b664;
+  --aikya-color-danger: #ff8994;
+  --aikya-color-on-brand: #111018;
+  --aikya-color-grid: rgb(146 137 255 / 8%);
+}

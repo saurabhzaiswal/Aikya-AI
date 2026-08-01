@@ -1,0 +1,33 @@
+{
+  "accessibility": {
+    "mainNavigation": "Main navigation",
+    "mobileNavigation": "Mobile navigation",
+    "skipToContent": "Skip to content",
+    "toggleNavigation": "Toggle navigation"
+  },
+  "actions": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "startTranslating": "Start translating"
+  },
+  "footer": {
+    "description": "A focused language workspace built independently by Saurabh Choudhary.",
+    "founderGitHub": "Founder on GitHub",
+    "legal": "Legal",
+    "product": "Product",
+    "rights": "All rights reserved."
+  },
+  "locale": {
+    "label": "Language"
+  },
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "docs": "Documentation",
+    "features": "Features",
+    "pricing": "Pricing",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service"
+  }
+}

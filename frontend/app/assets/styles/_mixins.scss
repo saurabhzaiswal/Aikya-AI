@@ -1,0 +1,9 @@
+@mixin focus-ring {
+  outline: 3px solid color-mix(in srgb, var(--aikya-color-brand) 42%, transparent);
+  outline-offset: 3px;
+}
+
+@mixin container {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}

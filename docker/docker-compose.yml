@@ -1,0 +1,196 @@
+name: aikya
+
+# Phase 1 development stack. All application and data dependencies run in containers.
+services:
+  frontend:
+    build:
+      context: ../frontend
+      target: development
+    volumes:
+      - ../frontend:/app
+      - frontend-node-modules:/app/node_modules
+    environment:
+      NUXT_API_PROXY_TARGET: http://backend:8000
+      NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:-http://localhost:5173}
+      NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-}
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:5173/"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    networks: [edge]
+
+  backend:
+    build:
+      context: ../backend
+      target: development
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    env_file:
+      - path: ../.env.example
+      - path: ../.env
+        required: false
+    volumes:
+      - ../backend/app:/app/app
+      - ../backend/alembic:/app/alembic
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    networks: [edge, internal]
+
+  worker:
+    build:
+      context: ../backend
+      target: development
+    command: ["celery", "-A", "app.worker:celery_app", "worker", "--loglevel=INFO"]
+    env_file:
+      - path: ../.env.example
+      - path: ../.env
+        required: false
+    volumes:
+      - ../backend/app:/app/app
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      clamav:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.worker:celery_app inspect ping --destination celery@$${HOSTNAME} --timeout 5 | grep -q pong"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    networks: [internal]
+
+  migrate:
+    build:
+      context: ../backend
+      target: development
+    command: ["alembic", "upgrade", "head"]
+    env_file:
+      - path: ../.env.example
+      - path: ../.env
+        required: false
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    networks: [internal]
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-aikya_dev}
+      POSTGRES_USER: ${POSTGRES_USER:-aikya_dev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-development-only-change-me}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+    networks: [internal]
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks: [internal]
+
+  clamav:
+    image: clamav/clamav:1.4_base
+    volumes:
+      - clamav-data:/var/lib/clamav
+    restart: unless-stopped
+    networks: [internal]
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-aikya-local-access}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-development-only-storage-secret}
+      MINIO_API_CORS_ALLOW_ORIGIN: ${AIKYA_PUBLIC_URL:-http://localhost:5173}
+    volumes:
+      - minio-data:/data
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+      start_period: 10s
+    restart: unless-stopped
+    networks: [internal]
+
+  minio-init:
+    image: quay.io/minio/mc:RELEASE.2025-04-16T18-13-26Z
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-aikya-local-access}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-development-only-storage-secret}
+      STORAGE_BUCKET_QUARANTINE: ${STORAGE_BUCKET_QUARANTINE:-aikya-quarantine}
+      STORAGE_BUCKET_DOCUMENTS: ${STORAGE_BUCKET_DOCUMENTS:-aikya-documents}
+      STORAGE_BUCKET_OUTPUTS: ${STORAGE_BUCKET_OUTPUTS:-aikya-outputs}
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        mc alias set local http://minio:9000 "$${MINIO_ROOT_USER}" "$${MINIO_ROOT_PASSWORD}"
+        mc mb --ignore-existing "local/$${STORAGE_BUCKET_QUARANTINE}"
+        mc mb --ignore-existing "local/$${STORAGE_BUCKET_DOCUMENTS}"
+        mc mb --ignore-existing "local/$${STORAGE_BUCKET_OUTPUTS}"
+        mc anonymous set none "local/$${STORAGE_BUCKET_QUARANTINE}"
+        mc anonymous set none "local/$${STORAGE_BUCKET_DOCUMENTS}"
+        mc anonymous set none "local/$${STORAGE_BUCKET_OUTPUTS}"
+    restart: "no"
+    networks: [internal]
+
+networks:
+  edge:
+  internal:
+    internal: true
+
+volumes:
+  frontend-node-modules:
+  postgres-data:
+  redis-data:
+  minio-data:
+  clamav-data:
