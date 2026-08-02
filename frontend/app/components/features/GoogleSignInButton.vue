@@ -1,7 +1,8 @@
 <template>
-  <a
+  <button
     class="google-auth-button ripple-control"
-    :href="authorizationUrl"
+    type="button"
+    @click="openAuthorization"
   >
     <span
       class="google-auth-mark"
@@ -32,7 +33,7 @@
       </svg>
     </span>
     <span>{{ $t('auth.google.continue') }}</span>
-  </a>
+  </button>
 </template>
 
 <script lang="ts">
@@ -46,13 +47,13 @@ export default defineComponent({
       default: '/app/dashboard',
     },
   },
-  computed: {
-    authorizationUrl(): string {
+  methods: {
+    openAuthorization(): void {
       const query = new URLSearchParams({
         return_to: this.returnTo,
         locale: this.$i18n.locale,
       })
-      return `/api/v1/auth/oauth/google/start?${query.toString()}`
+      window.location.assign(`/api/v1/auth/oauth/google/start?${query.toString()}`)
     },
   },
 })
