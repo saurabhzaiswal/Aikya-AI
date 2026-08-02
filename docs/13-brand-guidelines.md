@@ -64,6 +64,8 @@ Choose a UI family with strong Latin and Devanagari support, then use script-awa
 
 The mark should express connection or convergence without using flags, stereotyped scripts, speech-bubble clutter, or generic robot imagery. It must work as a single-color icon at browser-extension and favicon sizes. Final logo work requires trademark review and accessibility tests; no production logo is approved by this document.
 
+The Phase 1 implemented mark is an A-shaped bridge whose two language paths meet at one shared point. The full-color mark, monochrome mark, and favicon live under `frontend/public/brand/` and `frontend/public/favicon.svg`; usage and social-preview rules are documented in [`seo-social-sharing.md`](seo-social-sharing.md). This implementation is a release candidate, not a substitute for trademark and cultural review before launch.
+
 ## Imagery and motion
 
 Show real multilingual work and document structure rather than abstract AI brains. Animations clarify state transitions and progress; respect `prefers-reduced-motion`. Never imply processing has finished through decorative motion before durable completion.

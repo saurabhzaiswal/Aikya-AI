@@ -41,9 +41,11 @@ Completed on 2026-08-01:
 - Expanded localization to a browser-first 23-locale Global/Indian/Bihar registry with visible grouping, one-time feedback, cookie/account persistence, privacy rules, and safe catalog fallbacks.
 - Optimized Docker build contexts and production stages, documented measured cache/artifact causes, and added Buildx cache reuse for CI without changing business logic.
 - Fixed locale-aware post-authentication navigation, implemented Google-only Authorization Code + PKCE and WebAuthn passkey 2FA with recovery codes, migrated native PostgreSQL to `20260802_0002`, and added shared tactile press feedback for primary authentication/product controls.
+- Added the original Aikya bridge/convergence logo family and a static, lightweight, route-grouped Open Graph/X preview system without adding a runtime dependency or client lifecycle resource.
 
 Verification evidence:
 
+- Brand/SEO validation passes zero-warning ESLint, direct generated Nuxt `vue-tsc`, asset dimension/weight and SVG/manifest parsing, live public metadata/asset HTTP checks, home structured-data inspection, private/auth `X-Robots-Tag` checks, and direct visual inspection of all three final social images.
 - Nuxt lint and typecheck pass. Client/SSR compilation, 31-route prerendering, generated Nitro HTTP/SEO smoke, and the optimized production container build pass.
 - Backend Ruff, strict mypy (35 source files), compile, OpenAPI generation (18 paths), and Alembic upgrade passed.
 - The authentication extension passes backend Ruff and strict mypy across 38 source files, import/OpenAPI and OAuth state/nonce/PKCE smokes, Nuxt ESLint/typecheck, and Alembic upgrade to `20260802_0002`.

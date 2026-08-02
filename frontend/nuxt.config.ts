@@ -5,6 +5,7 @@ const publicSiteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000
 const apiProxyOrigin = process.env.NUXT_API_PROXY_TARGET || 'http://localhost:8000'
 const apiProxyTarget = new URL('/api', apiProxyOrigin).toString()
 const publicSiteHostname = new URL(publicSiteUrl).hostname
+const privateRouteHeaders = { 'x-robots-tag': 'noindex, nofollow' }
 const siteEnvironment = process.env.AIKYA_ENV
   || (['localhost', '127.0.0.1', '::1'].includes(publicSiteHostname)
     ? 'development'
@@ -37,8 +38,23 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#4338ca' },
+        { name: 'color-scheme', content: 'light dark' },
+        { name: 'application-name', content: 'Aikya AI' },
+        { name: 'author', content: 'Saurabh Choudhary' },
+        { name: 'referrer', content: 'strict-origin-when-cross-origin' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-title', content: 'Aikya AI' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
       ],
-      link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+      link: [
+        { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+        { rel: 'icon', href: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'mask-icon', href: '/brand/aikya-mark-black.svg', color: '#4338ca' },
+        { rel: 'sitemap', href: '/sitemap.xml', type: 'application/xml' },
+      ],
     },
   },
   css: ['~/assets/styles/main.scss', '~/assets/styles/tailwind.css'],
@@ -67,13 +83,13 @@ export default defineNuxtConfig({
     '/pricing': { prerender: true },
     '/privacy': { prerender: true },
     '/terms': { prerender: true },
-    '/app/**': { ssr: false },
-    '/**/app/**': { ssr: false },
-    '/login': { ssr: false },
-    '/register': { ssr: false },
-    '/**/login': { ssr: false },
-    '/**/register': { ssr: false },
-    '/signup': { redirect: '/register' },
+    '/app/**': { ssr: false, headers: privateRouteHeaders },
+    '/**/app/**': { ssr: false, headers: privateRouteHeaders },
+    '/login': { ssr: false, headers: privateRouteHeaders },
+    '/register': { ssr: false, headers: privateRouteHeaders },
+    '/**/login': { ssr: false, headers: privateRouteHeaders },
+    '/**/register': { ssr: false, headers: privateRouteHeaders },
+    '/signup': { redirect: '/register', headers: privateRouteHeaders },
   },
   compatibilityDate: '2026-08-01',
   nitro: {
@@ -117,6 +133,7 @@ export default defineNuxtConfig({
   },
   robots: {
     disallow: ['/app', '/app/**', '/*/app', '/*/app/**', '/login', '/register', '/signup', '/*/login', '/*/register'],
+    sitemap: '/sitemap.xml',
   },
   shadcn: {
     // Barrel exports already use the Ui prefix (for example, UiCard).

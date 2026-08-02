@@ -14,16 +14,10 @@
         aria-hidden="true"
       />
 
-      <NuxtLink
-        class="relative z-10 inline-flex w-fit items-center gap-3"
-        :to="$localePath('/')"
-      >
-        <span class="grid size-11 place-items-center rounded-2xl bg-on-brand text-xl font-black text-brand-strong shadow-xl">A</span>
-        <span>
-          <span class="block text-lg font-black leading-none">Aikya AI</span>
-          <span class="mt-1 block text-xs font-semibold text-on-brand/70">{{ $t('auth.brandTagline') }}</span>
-        </span>
-      </NuxtLink>
+      <BrandMark
+        class="relative z-10 w-fit"
+        inverse
+      />
 
       <div class="relative z-10 my-auto max-w-xl py-16">
         <p class="text-xs font-black uppercase tracking-[0.24em] text-on-brand/65">

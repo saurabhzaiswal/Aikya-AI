@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 const { data: articles } = await useAsyncData('blog-list', () => queryCollection('blog').order('date', 'DESC').all())
-usePageSeo({ title: 'Blog', description: 'Product and engineering notes from the Aikya AI founder.' })
+usePageSeo({ title: 'Blog', description: 'Product and engineering notes from the Aikya AI founder.', socialImage: 'blog' })
 function formatDate(value: string): string {
   return new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(value))
 }

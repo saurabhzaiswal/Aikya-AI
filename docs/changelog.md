@@ -2,6 +2,8 @@
 
 ## 2026-08-02
 
+- Added the original Aikya convergence/bridge SVG identity, monochrome mark, favicon, web manifest, and three lightweight 1200 × 630 social-preview groups for product, knowledge, and trust routes.
+- Centralized Open Graph/X image selection and full image metadata in the Nuxt SEO layer, added home-page `WebSite` and logo-aware `Organization` structured data, enforced server-side `X-Robots-Tag` headers on client-rendered private/auth routes, and documented social asset maintenance and launch validation.
 - Fixed the authenticated locale/navigation race that sent successful login and registration back to the landing page; dashboard routes are locale-aware and account-locale application is awaited.
 - Added real Google-only OpenID Connect Authorization Code + PKCE, verified-email account linking, signed state/nonce, safe redirects, and the existing rotating HttpOnly refresh session.
 - Added WebAuthn passkey 2FA enrollment and enforcement after password or Google authentication, UUIDv7 credential/challenge records, signature counters, and one-time recovery codes stored only as keyed hashes.

@@ -6,6 +6,7 @@ All notable user/developer-visible changes follow Keep a Changelog-style categor
 
 ### Added
 
+- Original Aikya convergence/bridge logo system, favicon, web manifest, lightweight route-grouped social artwork, complete Open Graph/X image metadata, and logo-aware public structured data.
 - Real Google-only sign-in with Authorization Code + PKCE, verified-email account linking, and rotating HttpOnly sessions.
 - WebAuthn passkey two-factor authentication with Windows Hello/device/security-key support and one-time hashed recovery codes.
 - Tactile raised/pressed interaction states across shared primary/secondary authentication and product controls, plus the official multicolor Google G mark.

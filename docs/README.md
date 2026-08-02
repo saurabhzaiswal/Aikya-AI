@@ -14,6 +14,7 @@ For a ten-second operational view, read [PROJECT_STATUS](PROJECT_STATUS.md), the
 6. [API specification](06-api-spec.md) - resource contracts, conventions, and errors.
 7. [UI/UX](07-ui-ux.md) - design system, page model, flows, responsive behavior, and accessibility.
    - [Frontend memory safety](frontend-memory-safety.md) - lifecycle ownership, cleanup, profiling, and leak release gate.
+   - [SEO and social sharing](seo-social-sharing.md) - logo assets, social-image groups, metadata, and validation rules.
 8. [Security](08-security.md) - threat model, control baseline, and privacy lifecycle.
 9. [Deployment](09-deployment.md) - environments, Docker, CI/CD, operations, and recovery.
    - [Root runbook](../RUNBOOK.md) - exact laptop, production-reference, rollback, and CI commands.
@@ -24,9 +25,7 @@ Founder and governance context: [founder profile](00-founder-profile.md), [proje
 
 The original [technical blueprint](01-technical-blueprint.md) is retained as the source synthesis. The numbered documents decompose and refine it; when a contradiction appears, create an ADR and update both the relevant focused document and its links.
 
-Cross-cutting implementation guidance includes [localization architecture](localization.md), [frontend memory safety](frontend-memory-safety.md), and [Docker build optimization](docker-optimization.md).
-
-Cross-cutting implementation guidance includes [localization architecture](localization.md) and [frontend memory safety](frontend-memory-safety.md).
+Cross-cutting implementation guidance includes [localization architecture](localization.md), [frontend memory safety](frontend-memory-safety.md), [SEO and social sharing](seo-social-sharing.md), and [Docker build optimization](docker-optimization.md).
 
 ## Diagrams
 

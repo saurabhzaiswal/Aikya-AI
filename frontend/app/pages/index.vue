@@ -163,10 +163,18 @@
 import { ArrowRight, CheckCircle2, CircleGauge, FileText, Languages, LockKeyhole, ScanText, ShieldCheck, Sparkles } from '@lucide/vue'
 
 import { PAGE_METADATA } from '~/seo/metadata'
-import { organizationSchema, softwareSchema } from '~/seo/schemas'
+import { organizationSchema, softwareSchema, websiteSchema } from '~/seo/schemas'
 
 const config = useRuntimeConfig()
-usePageSeo({ ...PAGE_METADATA.home, path: '/', schemas: [organizationSchema(config.public.siteUrl), softwareSchema(config.public.siteUrl)] })
+usePageSeo({
+  ...PAGE_METADATA.home,
+  path: '/',
+  schemas: [
+    organizationSchema(config.public.siteUrl),
+    websiteSchema(config.public.siteUrl),
+    softwareSchema(config.public.siteUrl),
+  ],
+})
 
 const trustItems = [
   { title: 'Your account has a real workspace boundary', description: 'Phase 1 data access is scoped through organization and workspace context in the backend.' },

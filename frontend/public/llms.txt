@@ -1,0 +1,28 @@
+# Aikya AI
+
+> Aikya AI is a privacy-focused language workspace for translating text and readable digital PDF documents. Its mission is One World. One Understanding.
+
+Aikya is an independently owned SaaS product built by founder and solo developer Saurabh Choudhary. Phase 1 deliberately focuses on text translation and readable digital-PDF translation. It does not claim perfect document fidelity, invisible provider processing, or finished enterprise capabilities.
+
+## Product
+
+- [Home](/): Product promise and current Phase 1 scope.
+- [Features](/features): Available translation workflows and explicit limitations.
+- [Pricing](/pricing): Current private-MVP and early-access position.
+- [About](/about): Mission, founder context, and why Aikya exists.
+
+## Knowledge
+
+- [Documentation](/docs): User guidance for the current translation workspace.
+- [Blog](/blog): Product, architecture, and solo-founder engineering notes.
+
+## Trust
+
+- [Privacy](/privacy): Current privacy-policy draft.
+- [Terms](/terms): Current terms-of-service draft.
+- [Contact](/contact): Official public contact routes.
+
+## Optional
+
+- [Founder GitHub](https://github.com/saurabhzaiswal): Public engineering profile.
+- [Founder portfolio](https://saurabhzaiswal.vercel.app/): Public founder profile.

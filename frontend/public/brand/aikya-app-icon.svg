@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Aikya">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title description">
+  <title id="title">Aikya app icon</title>
+  <desc id="description">The Aikya Weave in a rounded indigo app tile.</desc>
   <rect width="60" height="60" x="2" y="2" fill="#4338CA" rx="17"/>
   <path fill="#FFFFFF" d="M30 11H21c-5.5 0-10 4.5-10 10v10c0 5.5 4.5 10 10 10h9v-9h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h8v-9Z"/>
   <path fill="#5EEAD4" d="M34 53h9c5.5 0 10-4.5 10-10V33c0-5.5-4.5-10-10-10h-9v9h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8v9Z"/>

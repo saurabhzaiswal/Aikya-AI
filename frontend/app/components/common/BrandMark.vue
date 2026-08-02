@@ -1,17 +1,24 @@
 <template>
   <NuxtLink
     class="group inline-flex items-center gap-3"
-    to="/"
+    :to="$localePath('/')"
     aria-label="Aikya AI home"
   >
-    <span class="grid size-10 place-items-center rounded-[0.9rem] bg-brand text-lg font-black text-on-brand shadow-[0_0.7rem_1.5rem_rgb(79_70_229/0.22)] transition-transform group-hover:-rotate-3">
-      A
+    <span class="grid size-10 place-items-center transition-transform duration-200 group-hover:-rotate-2 group-hover:scale-[1.03]">
+      <img
+        :src="inverse ? '/brand/aikya-mark-dark.svg' : '/brand/aikya-mark.svg'"
+        alt=""
+        width="40"
+        height="40"
+        class="size-10"
+      >
     </span>
     <span>
-      <span class="block text-base font-black leading-none tracking-tight">Aikya AI</span>
+      <span class="block text-lg font-black leading-none tracking-[-0.035em]">Aikya</span>
       <span
         v-if="showTagline"
-        class="mt-1 block text-[0.68rem] font-semibold text-muted"
+        class="mt-1 block text-[0.68rem] font-semibold"
+        :class="inverse ? 'text-on-brand/70' : 'text-muted'"
       >One World. One Understanding.</span>
     </span>
   </NuxtLink>
@@ -24,6 +31,7 @@ export default defineComponent({
   name: 'BrandMark',
   props: {
     showTagline: { type: Boolean, default: true },
+    inverse: { type: Boolean, default: false },
   },
 })
 </script>

@@ -29,5 +29,5 @@
 import { BookOpen } from '@lucide/vue'
 
 const { data: pages } = await useAsyncData('docs-list', () => queryCollection('docs').all())
-usePageSeo({ title: 'Documentation', description: 'User documentation for the Aikya AI Phase 1 translation workspace.' })
+usePageSeo({ title: 'Documentation', description: 'User documentation for the Aikya AI Phase 1 translation workspace.', socialImage: 'knowledge' })
 </script>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title description">
+  <title id="title">Retired Aikya bridge mark</title>
+  <desc id="description">Archived A-shaped bridge concept.</desc>
+  <defs>
+    <linearGradient id="surface" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6558f5"/><stop offset=".55" stop-color="#5147e5"/><stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+    <mask id="counter"><rect width="64" height="64" fill="#fff"/><path d="m32 24.2-3.2 8h6.4Z" fill="#000"/></mask>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#surface)"/>
+  <path d="M15.7 44.5 27.1 16.8c.8-2 2.6-3.2 4.9-3.2s4.1 1.2 4.9 3.2l11.4 27.7c1.1 2.7-.9 5.7-3.8 5.7h-2.2c-1.8 0-3.4-1.1-4-2.8l-1.8-4.9h-9l-1.8 4.9a4.3 4.3 0 0 1-4 2.8h-2.2c-2.9 0-4.9-3-3.8-5.7Z" fill="#fff" mask="url(#counter)"/>
+  <path d="M23.7 37.4c3.1-2.6 5.8-3.8 8.3-3.8s5.2 1.2 8.3 3.8" fill="none" stroke="#7dd3fc" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="32" cy="34" r="2.1" fill="#fbbf24"/>
+</svg>

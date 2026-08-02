@@ -144,6 +144,8 @@ Current highest-priority item: run native Windows full-stack acceptance with Min
 
 Completed:
 
+- Added the original Aikya convergence/bridge mark, monochrome browser mark, favicon, manifest, and optimized product/knowledge/trust social preview groups.
+- Centralized complete Open Graph/X image metadata and route-group mapping, expanded truthful home-page organization/site/software structured data with the crawlable brand logo, and enforced `X-Robots-Tag` headers on client-rendered private/auth routes.
 - Fixed the post-login locale race that redirected authenticated users to the landing page; private dashboard routes now participate in Nuxt i18n and account-locale application is awaited before locale-aware navigation.
 - Implemented Google-only OAuth with signed HttpOnly state, nonce, PKCE, verified ID-token/email checks, safe account linking, safe internal return paths, and normal rotating refresh sessions.
 - Implemented WebAuthn passkey 2FA enrollment and password/Google login enforcement with one-time challenges, signature counters, UUIDv7 persistence, and ten one-time recovery codes stored only as keyed hashes.
@@ -168,6 +170,8 @@ Changed:
 
 Notes:
 
+- Brand/SEO acceptance passes zero-warning ESLint, direct generated Nuxt `vue-tsc`, SVG/manifest parsing, exact 1200 × 630 asset checks, live HTTP delivery, representative public-route canonical/Open Graph/X checks, home JSON-LD checks, and private/auth `X-Robots-Tag` checks. The normal `nuxt typecheck` wrapper could not rewrite `.nuxt/eslint.config.mjs` while the founder's dev server held it open; no TypeScript diagnostic was emitted, and direct `vue-tsc` passed.
+- The final generated social art was visually inspected at its saved 1200 × 630 dimensions. In-app browser discovery returned no available session, so header-level logo/browser visual QA remains part of the existing browser acceptance gate.
 - Local PostgreSQL successfully upgraded from `20260801_0001` to `20260802_0002`; Google OAuth state/nonce/PKCE safe-return smoke, backend Ruff, strict mypy, import/OpenAPI, Nuxt ESLint, and Nuxt typecheck pass.
 - The active dashboard contains the complete founder-approved Phase 1 surface. OCR/scanned-PDF reconstruction, DOCX, AI, billing, teams, extension, mobile, and desktop remain explicitly outside this phase.
 - Auth redesign acceptance passes frontend ESLint, generated Nuxt `vue-tsc`, production Nuxt build, zero-vulnerability production audit, backend Ruff/mypy, 8-character password-boundary smoke, button-ripple coverage, and generated-server English/Hindi login/register HTTP smokes. Visual browser review remains pending because no browser-control session was available.

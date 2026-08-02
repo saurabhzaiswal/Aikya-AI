@@ -22,6 +22,6 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data: page } = await useAsyncData(`docs-${route.path}`, () => queryCollection('docs').path(route.path).first())
-if (page.value) usePageSeo({ title: page.value.title, description: page.value.description })
+if (page.value) usePageSeo({ title: page.value.title, description: page.value.description, socialImage: 'knowledge' })
 else usePageSeo({ title: 'Guide not found', description: 'The requested Aikya AI guide was not found.', noIndex: true })
 </script>
