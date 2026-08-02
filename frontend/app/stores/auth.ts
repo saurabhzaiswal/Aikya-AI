@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
-import type { AuthResponse, User, UserContext } from '~/types/api'
+import type { AuthenticationResponseJSON } from '@simplewebauthn/browser'
+import type { AuthResponse, User, UserContext, WebAuthnRequiredResponse } from '~/types/api'
 
 interface AuthState {
   user: User | null
@@ -14,11 +15,16 @@ export const useAuthStore = defineStore('auth', {
     isAuthenticated: (state): boolean => Boolean(state.user),
   },
   actions: {
-    applyAuth(auth: AuthResponse): void {
+    async applyAuth(auth: AuthResponse): Promise<void> {
       useNuxtApp().$services.api.setAccessToken(auth.access_token)
       this.user = auth.user
       this.context = auth.context
-      void useNuxtApp().$languagePreference.applyAccountLocale(auth.user.locale)
+      try {
+        await useNuxtApp().$languagePreference.applyAccountLocale(auth.user.locale)
+      }
+      catch {
+        // Authentication remains valid if optional locale synchronization fails.
+      }
     },
     clearAuth(): void {
       useNuxtApp().$services.api.setAccessToken(null)
@@ -28,7 +34,7 @@ export const useAuthStore = defineStore('auth', {
     async initialize(): Promise<void> {
       if (this.initialized) return
       try {
-        this.applyAuth(await useNuxtApp().$services.auth.refresh())
+        await this.applyAuth(await useNuxtApp().$services.auth.refresh())
       }
       catch {
         this.clearAuth()
@@ -37,12 +43,25 @@ export const useAuthStore = defineStore('auth', {
         this.initialized = true
       }
     },
-    async login(email: string, password: string): Promise<void> {
-      this.applyAuth(await useNuxtApp().$services.auth.login(email, password))
+    async login(email: string, password: string): Promise<WebAuthnRequiredResponse | null> {
+      const result = await useNuxtApp().$services.auth.login(email, password)
+      if ('status' in result && result.status === 'mfa_required') {
+        return result as WebAuthnRequiredResponse
+      }
+      await this.applyAuth(result as AuthResponse)
+      this.initialized = true
+      return null
+    },
+    async completePasskeyLogin(challengeId: string, credential: AuthenticationResponseJSON): Promise<void> {
+      await this.applyAuth(await useNuxtApp().$services.auth.verifyPasskeyLogin(challengeId, credential))
+      this.initialized = true
+    },
+    async completeRecoveryLogin(challengeId: string, recoveryCode: string): Promise<void> {
+      await this.applyAuth(await useNuxtApp().$services.auth.verifyRecoveryCode(challengeId, recoveryCode))
       this.initialized = true
     },
     async register(displayName: string, email: string, password: string, locale: string): Promise<void> {
-      this.applyAuth(await useNuxtApp().$services.auth.register(displayName, email, password, locale))
+      await this.applyAuth(await useNuxtApp().$services.auth.register(displayName, email, password, locale))
       this.initialized = true
     },
     async updateLocale(locale: string): Promise<void> {

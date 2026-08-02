@@ -6,6 +6,7 @@
       <NuxtPage />
     </NuxtLayout>
     <LanguageNotice />
+    <ToastViewport />
   </div>
 </template>
 

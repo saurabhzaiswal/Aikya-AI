@@ -1,6 +1,6 @@
 <template>
   <button
-    class="grid size-11 place-items-center rounded-xl border border-border bg-surface text-ink hover:border-brand/50 hover:bg-brand-soft"
+    class="ripple-control grid size-11 place-items-center rounded-xl border border-border bg-surface text-ink hover:border-brand/50 hover:bg-brand-soft"
     type="button"
     :aria-label="label"
     @click="toggle"
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Moon, Sun } from 'lucide-vue-next'
+import { Moon, Sun } from '@lucide/vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

@@ -1,4 +1,4 @@
-# User and Dashboard API Contract — Phase 1
+# User and Dashboard API Contract - Phase 1
 
 Base path: `/api/v1`
 

@@ -41,14 +41,14 @@
       </div>
       <NuxtLink
         class="button-primary mt-8 w-full"
-        to="/register"
+        :to="$localePath('/register')"
       >Request MVP access</NuxtLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { CheckCircle2 } from 'lucide-vue-next'
+import { CheckCircle2 } from '@lucide/vue'
 import { PAGE_METADATA } from '~/seo/metadata'
 import { faqSchema } from '~/seo/schemas'
 

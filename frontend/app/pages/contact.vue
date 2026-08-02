@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ExternalLink } from 'lucide-vue-next'
+import { ExternalLink } from '@lucide/vue'
 import { FOUNDER } from '~/seo/constants'
 import { PAGE_METADATA } from '~/seo/metadata'
 

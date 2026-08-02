@@ -18,6 +18,9 @@ Status values: Proposed, Accepted, Superseded, Rejected
 | ADR-012 | Separate marketing/dashboard rendering boundary | Rejected for Phase 1 | web implementation | Superseded by ADR-014 |
 | [ADR-013](ADR-013-clamav-malware-scanning.md) | Isolated ClamAV upload scanning | Accepted for Phase 1 | PDF processing | CTO; production review pending |
 | [ADR-014](ADR-014-unified-nuxt4-frontend.md) | Unified Nuxt 4 SSR/public + client/private web application | Accepted | frontend migration | Founder |
+| [ADR-015](ADR-015-phase1-runtime-identifiers-localization-and-ci.md) | Runtime, UUIDv7, localization, memory-safety, and CI baselines | Accepted | Phase 1 foundation | Founder |
+| [ADR-016](ADR-016-browser-first-language-preferences.md) | Browser-first language preferences | Accepted | localization implementation | Founder |
+| [ADR-017](ADR-017-authentication-experience-and-evolution.md) | Auth UX, HttpOnly session continuity, and gated SSO/MFA evolution | Accepted | auth evolution | Founder |
 
 ## Current architectural baseline
 

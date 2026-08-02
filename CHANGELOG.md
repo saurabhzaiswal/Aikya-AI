@@ -6,6 +6,11 @@ All notable user/developer-visible changes follow Keep a Changelog-style categor
 
 ### Added
 
+- Real Google-only sign-in with Authorization Code + PKCE, verified-email account linking, and rotating HttpOnly sessions.
+- WebAuthn passkey two-factor authentication with Windows Hello/device/security-key support and one-time hashed recovery codes.
+- Tactile raised/pressed interaction states across shared primary/secondary authentication and product controls, plus the official multicolor Google G mark.
+- Responsive login/register experience with placeholders, accessible client validation, password confirmation/checklist, bounded toast feedback, reliable post-authentication redirects, and lifecycle-free ripple interactions across buttons.
+- ADR-017 covering the existing rotating HttpOnly refresh session and the security gates for future Google, Microsoft, LinkedIn, Facebook, X, and MFA support.
 - Production engineering documentation foundation and editable diagrams.
 - Docker development and production reference configuration.
 - AI-agent operating system, progress tracking, contribution rules, API planning, and ADR baseline.
@@ -18,14 +23,17 @@ All notable user/developer-visible changes follow Keep a Changelog-style categor
 
 ### Security
 
+- Google state, nonce, PKCE, issuer/audience/signature/expiry validation and safe internal redirects; enabled Aikya MFA cannot be bypassed through Google login.
+- One-time WebAuthn challenges, verified-user assertions, authenticator signature counters, and keyed-hash recovery-code storage.
+- Synchronized the local-registration password boundary at 8–128 characters with a three-of-four character-class requirement across Nuxt and FastAPI.
 - Added content-safe API errors, short-lived signed URLs, checksum/signature/size/page validation, private buckets, randomized object keys, and scanner-gated quarantine promotion.
 - Added retry-safe session-family revocation and document processing recovery behavior.
 
 ### Known limitations
 
-- Nuxt lint/type/build acceptance, full Docker runtime acceptance, real provider integration, visual browser QA, active deletion/retention automation, automated suites, and final security review remain open before private beta.
+- Full Docker runtime acceptance, real translation-provider integration, live Google callback acceptance with founder-owned credentials, visual browser QA, active deletion/retention automation, automated suites, credential reset/revocation UX, authentication audit events, and final security review remain open before private beta.
 
-## 0.1.0 — 2026-08-01
+## 0.1.0 - 2026-08-01
 
 ### Added
 

@@ -1,18 +1,28 @@
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+LOCAL_ENV_FILE = Path(__file__).resolve().parents[2] / ".env.local"
+
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=None, case_sensitive=True, extra="ignore")
+    # Process environment remains highest priority. The absolute path keeps native
+    # FastAPI and Alembic behavior independent of the caller's working directory.
+    # Docker images do not contain this ignored file and receive values from Compose.
+    model_config = SettingsConfigDict(
+        env_file=LOCAL_ENV_FILE,
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        extra="ignore",
+    )
 
     AIKYA_ENV: str = "development"
     AIKYA_LOG_LEVEL: str = "INFO"
+    AIKYA_PUBLIC_URL: str = "http://localhost:3000"
     AIKYA_API_URL: str = "http://localhost:8000"
-    DATABASE_URL: str = (
-        "postgresql+psycopg://aikya_dev:development-only-change-me@postgres:5432/aikya_dev"
-    )
+    DATABASE_URL: str = "postgresql+psycopg://postgres@localhost:5432/aikya-ai"
     REDIS_URL: str = "redis://redis:6379/0"
     CELERY_BROKER_URL: str = "redis://redis:6379/1"
     CELERY_RESULT_BACKEND: str = "redis://redis:6379/2"
@@ -35,8 +45,16 @@ class Settings(BaseSettings):
     AUTH_ACCESS_TOKEN_TTL_SECONDS: int = 900
     AUTH_REFRESH_TOKEN_TTL_SECONDS: int = 2_592_000
     AUTH_COOKIE_SECURE: bool = False
+    AUTH_GOOGLE_CLIENT_ID: str = ""
+    AUTH_GOOGLE_CLIENT_SECRET: str = ""
+    AUTH_GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/v1/auth/oauth/google/callback"
+    AUTH_OAUTH_STATE_TTL_SECONDS: int = 600
+    WEBAUTHN_RP_ID: str = "localhost"
+    WEBAUTHN_RP_NAME: str = "Aikya AI"
+    WEBAUTHN_ORIGIN: str = "http://localhost:3000"
+    WEBAUTHN_CHALLENGE_TTL_SECONDS: int = 300
 
-    ALLOWED_ORIGINS: str = "http://localhost:5173"
+    ALLOWED_ORIGINS: str = "http://localhost:3000"
     MAX_UPLOAD_BYTES: int = 52_428_800
     MAX_DOCUMENT_PAGES: int = 100
     MAX_TEXT_TRANSLATION_CHARACTERS: int = 10_000

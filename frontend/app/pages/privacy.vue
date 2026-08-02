@@ -6,7 +6,7 @@
       </p>
       <h1>Privacy policy</h1>
       <div class="rounded-2xl border border-warning/30 bg-surface p-5 text-sm text-warning">
-        <strong>Draft—not effective.</strong> This notice documents the intended Phase 1 privacy posture and requires legal review before public launch.
+        <strong>Draft-not effective.</strong> This notice documents the intended Phase 1 privacy posture and requires legal review before public launch.
       </div>
       <h2>What the MVP processes</h2>
       <p>Account details, workspace identifiers, submitted text, uploaded digital PDF documents, translation output, security logs, and limited operational metadata may be processed to provide the service.</p>

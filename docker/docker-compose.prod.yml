@@ -86,7 +86,7 @@ services:
     restart: always
     security_opt: [no-new-privileges:true]
     stop_grace_period: 30s
-    networks: [app, data]
+    networks: [app, data, egress]
 
   worker:
     image: "${AIKYA_BACKEND_IMAGE:?Set AIKYA_BACKEND_IMAGE to an approved immutable image reference}"
@@ -112,7 +112,7 @@ services:
     restart: always
     security_opt: [no-new-privileges:true]
     stop_grace_period: 60s
-    networks: [data]
+    networks: [data, egress]
 
   migrate:
     image: "${AIKYA_BACKEND_IMAGE:?Set AIKYA_BACKEND_IMAGE to an approved immutable image reference}"
@@ -161,7 +161,7 @@ services:
     volumes:
       - clamav-data:/var/lib/clamav
     restart: always
-    networks: [data]
+    networks: [data, egress]
 
   minio:
     image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
@@ -207,6 +207,9 @@ services:
 
 networks:
   edge:
+  # Provider traffic and signature updates require outbound DNS/HTTPS.
+  # Keep stateful data services off this network and publish no host ports.
+  egress:
   app:
     internal: true
   data:

@@ -1,4 +1,4 @@
-# Aikya AI Terms of Service — Draft
+# Aikya AI Terms of Service - Draft
 
 Status: Internal product draft; not yet effective  
 Owner: Saurabh Choudhary  

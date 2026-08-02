@@ -11,6 +11,118 @@
     "signOut": "Sign out",
     "startTranslating": "Start translating"
   },
+  "auth": {
+    "actions": {
+      "hidePassword": "Hide password",
+      "showPassword": "Show password"
+    },
+    "google": {
+      "continue": "Continue with Google",
+      "orEmail": "or continue with email",
+      "errors": {
+        "google_not_configured": "Google sign-in is not configured yet. Add the provider credentials to your local environment.",
+        "google_cancelled": "Google sign-in was cancelled.",
+        "google_oauth_failed": "Google sign-in could not be completed. Please try again.",
+        "google_identity_unverified": "Google did not provide a verified email address.",
+        "google_account_link_failed": "This Google account could not be linked safely.",
+        "invalid_oauth_state": "Google sign-in expired. Please try again."
+      }
+    },
+    "mfa": {
+      "back": "Use a different account",
+      "description": "Verify with Windows Hello, your device passkey, or a one-time recovery code.",
+      "failure": "Security verification could not be completed.",
+      "recoveryLabel": "Recovery code",
+      "recoveryPlaceholder": "XXXX-XXXX-XXXX",
+      "required": "Complete security verification to continue.",
+      "title": "One more security step",
+      "usePasskey": "Verify with a passkey",
+      "useRecovery": "Use a recovery code instead",
+      "verifyRecovery": "Verify recovery code"
+    },
+    "backHome": "Back to Aikya AI",
+    "benefits": {
+      "documents": {
+        "description": "Translate plain text and readable digital PDF documents in one focused place.",
+        "title": "One translation workspace"
+      },
+      "languages": {
+        "description": "Use a familiar interface with browser-first language preferences and English fallback.",
+        "title": "Built for global understanding"
+      },
+      "privacy": {
+        "description": "Your session uses a rotating HttpOnly cookie; long-lived tokens never enter browser storage.",
+        "title": "Privacy-first by default"
+      }
+    },
+    "brandTagline": "One World. One Understanding.",
+    "fields": {
+      "confirmPassword": {
+        "label": "Confirm password",
+        "placeholder": "Enter the same password again"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "you{'@'}example.com"
+      },
+      "name": {
+        "label": "Your name",
+        "placeholder": "How should we address you?"
+      },
+      "password": {
+        "createLabel": "Create a password",
+        "createPlaceholder": "Use 8 or more characters",
+        "label": "Password",
+        "loginPlaceholder": "Enter your password"
+      }
+    },
+    "heroDescription": "Translate text and digital documents inside a calm workspace designed around privacy, clarity, and honest product boundaries.",
+    "heroTitle": "Every language deserves a clear path to understanding.",
+    "login": {
+      "badge": "Secure workspace access",
+      "createAccount": "Create your free workspace",
+      "description": "Enter your details to continue where you left off.",
+      "failure": "Sign in could not be completed.",
+      "newUser": "New to Aikya?",
+      "passwordHint": "Up to 128 characters",
+      "submit": "Sign in securely",
+      "submitting": "Signing you in…",
+      "success": "Welcome back. Your workspace is ready.",
+      "title": "Welcome back"
+    },
+    "passwordRules": {
+      "length": "8–128 characters",
+      "lowercase": "One lowercase letter",
+      "number": "One number",
+      "symbol": "One symbol",
+      "uppercase": "One uppercase letter"
+    },
+    "privateWorkspace": "Your private language workspace",
+    "register": {
+      "agreementJoin": "and",
+      "agreementPrefix": "By creating an account, you agree to the",
+      "badge": "Focused Phase 1 access",
+      "description": "Create one private workspace for text and digital PDF translation.",
+      "existingUser": "Already have an account?",
+      "failure": "Your workspace could not be created.",
+      "signIn": "Sign in to your workspace",
+      "submit": "Create my workspace",
+      "submitting": "Creating your workspace…",
+      "success": "Your private workspace has been created.",
+      "title": "Start understanding"
+    },
+    "securityNote": "Founder-built · Privacy-focused · Honest Phase 1 scope",
+    "sessionProtected": "Protected by a rotating, HttpOnly session cookie",
+    "validation": {
+      "correctFields": "Please correct the highlighted fields and try again.",
+      "emailInvalid": "Enter a valid email address.",
+      "emailRequired": "Email address is required.",
+      "nameLength": "Name must contain between 2 and 120 characters.",
+      "passwordMismatch": "Passwords must match.",
+      "passwordRequired": "Password is required.",
+      "passwordStrength": "Use 8–128 characters and at least three character types."
+    }
+  },
   "footer": {
     "description": "A focused language workspace built independently by Saurabh Choudhary.",
     "founderGitHub": "Founder on GitHub",
@@ -32,6 +144,22 @@
     "selectorTitle": "Choose your interface language",
     "unsupported": "We couldn't detect a supported browser language. English is being used."
   },
+  "security": {
+    "passkeys": {
+      "addAnother": "Add another passkey",
+      "added": "Added {date}",
+      "description": "Use Windows Hello, Touch ID, a security key, or a device passkey as a second factor after your password.",
+      "enable": "Enable passkey 2FA",
+      "eyebrow": "Account security",
+      "failure": "The passkey could not be added.",
+      "recoveryDescription": "Save these one-time codes now. They are shown only once and each code works once.",
+      "recoveryTitle": "Save your recovery codes",
+      "statusFailure": "Security settings could not be loaded.",
+      "success": "Passkey protection is now enabled.",
+      "title": "Passkey two-factor authentication",
+      "unsupported": "This browser or device does not support WebAuthn passkeys."
+    }
+  },
   "nav": {
     "about": "About",
     "blog": "Blog",
@@ -41,5 +169,8 @@
     "pricing": "Pricing",
     "privacy": "Privacy policy",
     "terms": "Terms of service"
+  },
+  "toast": {
+    "notifications": "Notifications"
   }
 }

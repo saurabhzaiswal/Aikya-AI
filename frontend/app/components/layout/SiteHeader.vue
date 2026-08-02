@@ -6,33 +6,33 @@
         class="hidden items-center gap-1 md:flex"
         :aria-label="$t('accessibility.mainNavigation')"
       >
-        <NuxtLinkLocale
+        <NuxtLink
           v-for="item in navigation"
           :key="item.to"
           class="rounded-xl px-3 py-2 text-sm font-bold text-muted hover:bg-subtle hover:text-ink"
           active-class="!text-brand"
-          :to="item.to"
+          :to="$localePath(item.to)"
         >
           {{ $t(item.labelKey) }}
-        </NuxtLinkLocale>
+        </NuxtLink>
       </nav>
       <div class="flex items-center gap-2">
         <ThemeToggle />
         <LocaleSwitcher class="hidden lg:flex" />
-        <NuxtLinkLocale
+        <NuxtLink
           class="hidden min-h-11 items-center rounded-xl px-3 font-bold text-muted hover:text-ink sm:inline-flex"
-          to="/login"
+          :to="$localePath('/login')"
         >
           {{ $t('actions.signIn') }}
-        </NuxtLinkLocale>
-        <NuxtLinkLocale
+        </NuxtLink>
+        <NuxtLink
           class="button-primary !min-h-11 !px-4"
-          to="/register"
+          :to="$localePath('/register')"
         >
           {{ $t('actions.startTranslating') }}
-        </NuxtLinkLocale>
+        </NuxtLink>
         <button
-          class="grid size-11 place-items-center rounded-xl border border-border md:hidden"
+          class="ripple-control grid size-11 place-items-center rounded-xl border border-border md:hidden"
           type="button"
           :aria-expanded="menuOpen"
           aria-controls="mobile-navigation"
@@ -58,29 +58,29 @@
       class="page-shell grid gap-1 border-t border-border py-3 md:hidden"
       :aria-label="$t('accessibility.mobileNavigation')"
     >
-      <NuxtLinkLocale
+      <NuxtLink
         v-for="item in navigation"
         :key="item.to"
         class="rounded-xl px-3 py-3 font-bold text-muted hover:bg-subtle hover:text-ink"
-        :to="item.to"
+        :to="$localePath(item.to)"
         @click="menuOpen = false"
       >
         {{ $t(item.labelKey) }}
-      </NuxtLinkLocale>
+      </NuxtLink>
       <LocaleSwitcher class="mt-2 w-fit lg:hidden" />
-      <NuxtLinkLocale
+      <NuxtLink
         class="rounded-xl px-3 py-3 font-bold text-muted sm:hidden"
-        to="/login"
+        :to="$localePath('/login')"
         @click="menuOpen = false"
       >
         {{ $t('actions.signIn') }}
-      </NuxtLinkLocale>
+      </NuxtLink>
     </nav>
   </header>
 </template>
 
 <script lang="ts">
-import { Menu as MenuIcon, X } from 'lucide-vue-next'
+import { Menu as MenuIcon, X } from '@lucide/vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

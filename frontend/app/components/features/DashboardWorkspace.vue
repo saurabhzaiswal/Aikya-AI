@@ -45,7 +45,7 @@
             Recent activity
           </h2>
         </div><button
-          class="text-link text-sm"
+          class="ripple-control rounded-lg px-2 py-1 text-link text-sm"
           type="button"
           :disabled="loading"
           @click="loadDashboard"
@@ -111,6 +111,7 @@
         </div>
       </div>
     </section>
+    <PasskeySecurity />
   </div>
 </template>
 

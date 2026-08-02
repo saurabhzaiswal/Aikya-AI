@@ -1,4 +1,6 @@
-FROM python:3.14-slim AS base
+# syntax=docker/dockerfile:1.7
+
+FROM python:3.14-slim AS runtime-base
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -8,23 +10,27 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN groupadd --system aikya && useradd --system --gid aikya --create-home aikya
 WORKDIR /app
 
+FROM runtime-base AS production-dependencies
 COPY --from=ghcr.io/astral-sh/uv:0.8.4 /uv /uvx /bin/
 COPY pyproject.toml uv.lock* ./
-RUN uv sync --frozen --no-dev --no-install-project
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev --no-install-project
 
-COPY app ./app
-COPY alembic ./alembic
-COPY alembic.ini ./alembic.ini
-RUN uv sync --frozen --no-dev
-
-USER aikya
 ENV PATH="/app/.venv/bin:$PATH"
 
-FROM base AS development
-USER root
-RUN uv sync --frozen
+FROM production-dependencies AS development
+RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-install-project
+COPY --chown=aikya:aikya app ./app
+COPY --chown=aikya:aikya alembic ./alembic
+COPY --chown=aikya:aikya alembic.ini ./alembic.ini
 USER aikya
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 
-FROM base AS production
+FROM runtime-base AS production
+ENV PATH="/app/.venv/bin:$PATH"
+COPY --from=production-dependencies --chown=aikya:aikya /app/.venv /app/.venv
+COPY --chown=aikya:aikya app ./app
+COPY --chown=aikya:aikya alembic ./alembic
+COPY --chown=aikya:aikya alembic.ini ./alembic.ini
+USER aikya
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]

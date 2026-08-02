@@ -1,4 +1,4 @@
-# Future Ideas — Not in the Current Build
+# Future Ideas - Not in the Current Build
 
 This file protects MVP focus. Items below are not authorized for Phase 1 implementation:
 

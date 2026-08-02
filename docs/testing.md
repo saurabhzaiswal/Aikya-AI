@@ -4,7 +4,7 @@ Automated unit, integration, and E2E suites are temporarily deferred by explicit
 
 Current mandatory verification includes frontend/backend static checks, production builds, import/config checks, Alembic migration checks, Compose configuration checks, API smoke checks, security review, and manual critical-flow checks where the environment permits.
 
-## Phase 1 evidence — 2026-08-01
+## Phase 1 evidence - 2026-08-01
 
 - Passed: ESLint, Vue TypeScript check, Vite production build, Ruff, strict mypy, Python compile, FastAPI OpenAPI generation, and Alembic upgrade against a disposable SQLite database.
 - Passed: synthetic registration/login/current-user/dashboard, refresh rotation/logout/replay rejection, configured text translation/history, signed upload validation, readable PDF rendering/full worker job, and clamd protocol clean/infected/unavailable smoke flows.

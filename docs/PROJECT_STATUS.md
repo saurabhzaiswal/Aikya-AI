@@ -1,9 +1,9 @@
 # Aikya AI Project Status
 
 Current version: 0.1.0  
-Last updated: 2026-08-01  
+Last updated: 2026-08-02  
 Current phase: Phase 1 MVP Nuxt frontend acceptance  
-Current goal: Complete Nuxt lint, type, build, SEO, and visual acceptance for the implemented product without adding future-scope features.
+Current goal: Complete native Phase 1 authentication and browser acceptance without adding future-scope features.
 
 ## Current health
 
@@ -12,10 +12,10 @@ Current goal: Complete Nuxt lint, type, build, SEO, and visual acceptance for th
 | Product scope | Green | MVP boundary documented and explicitly approved |
 | Architecture | Green | Modular-monolith blueprint and editable diagrams complete |
 | Documentation | Green | Architecture, API, operations, status, progress, and Phase 1 notes synchronized |
-| Frontend | Yellow | Browser-first 23-locale selector passes local lint/typecheck after the CI-reported type correction; the GitHub rerun and visual review remain required |
-| Backend | Green | Python 3.14.6, UUIDv7 generation, Ruff, strict mypy, compile, and Alembic-head checks pass |
+| Frontend | Yellow | Locale-safe dashboard redirects, real Google entry, WebAuthn enrollment/challenge UI, raised press-feedback controls, lint, and generated-type checks pass. Browser visual review remains required |
+| Backend | Yellow | Google Authorization Code + PKCE, rotating sessions, WebAuthn/recovery persistence, Ruff, strict mypy, import/OpenAPI checks, and local migration `20260802_0002` pass; final authentication abuse/security review remains |
 | CI | Yellow | First GitHub run exposed a widened locale type; the registry/type guard and job-level site URL are corrected, with the rerun pending; CD remains intentionally absent |
-| Infrastructure | Yellow | Development/production YAML parses; Docker runtime is unavailable on this machine |
+| Infrastructure | Yellow | Sub-megabyte contexts, production images, isolated smokes, pulls, and core Compose services pass; final ClamAV/worker acceptance awaits recovery from a local Docker Desktop API failure |
 | Security/privacy | Yellow | Tenant checks, rotating sessions, limits, signed storage, validation, and fail-closed malware scanning implemented; deletion automation/final review remain |
 | Translation provider | Yellow | LibreTranslate-compatible adapter and synthetic integration pass; real provider credentials are not configured |
 | Visual QA | Yellow | Frontend HTTP/build checks pass; no in-app browser runtime was available for visual inspection |
@@ -32,16 +32,16 @@ Excluded: OCR, AI enhancement, audio, resume tools, extension, mobile, desktop, 
 
 ## Current blockers and limitations
 
-- Docker is not installed or not available in the current execution environment, so Compose runtime verification cannot be performed here.
+- Docker is available and both application images build successfully. The transient registry timeout cleared on retry; during full-stack acceptance Docker Desktop's container-inspect API returned HTTP 500 and then stopped responding while waiting for ClamAV health.
 - A real translation provider and credentials must be configured for non-demo translation; no secret is stored in the repository.
+- Native PostgreSQL is reachable and upgraded to Alembic head `20260802_0002`; end-to-end Google callback needs founder-owned Google OAuth credentials.
 - Active document deletion/retention cleanup, automated security/tenant tests, and the final security review are required before private beta.
 - Visual browser QA remains outstanding because the current browser-control environment exposed no browser session.
-- Final Nitro dependency tracing is I/O-bound on this Windows environment and exceeded five minutes; generated output runs, but an uninterrupted build/container build is still required.
 
 ## Last major change
 
-Established the browser-first 23-locale Global/Indian/Bihar preference system, one-time notice, grouped switcher, account persistence, privacy boundary, and English-safe Preview policy under ADR-016.
+Fixed the locale/session dashboard redirect race, implemented real Google OAuth and WebAuthn 2FA with one-time recovery codes, and standardized raised press-feedback controls while keeping the rotating HttpOnly refresh-session model.
 
 ## Next checkpoint
 
-Complete an uninterrupted `npm run build` or frontend container build on Node 24.18.x. Then run the Docker critical flow with a trusted translation provider before deletion/retention and private-beta work.
+Use the canonical native Windows workflow in `LOCAL_DEVELOPMENT.md`, run the critical flow with a trusted translation provider, and complete visual review before deletion/retention and private-beta work. Docker acceptance remains recorded but is not the active local-development workflow.

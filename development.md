@@ -22,7 +22,7 @@ docker compose up -d
 docker compose ps
 ```
 
-Open the frontend on `http://localhost:5173`, API docs on `http://localhost:8000/api/docs`, backend readiness on `http://localhost:8000/health/ready`, and MinIO console on `http://localhost:9001` using the development-only credentials from `.env`.
+Open the frontend on `http://localhost:3000`, API docs on `http://localhost:8000/api/docs`, backend readiness on `http://localhost:8000/health/ready`, and MinIO console on `http://localhost:9001` using the development-only credentials from `.env`.
 
 The frontend, backend, and worker build the Phase 1 Nuxt/FastAPI application. PostgreSQL migrations run through the one-shot `migrate` service before the API and worker become healthy.
 
@@ -32,6 +32,8 @@ The frontend, backend, and worker build the Phase 1 Nuxt/FastAPI application. Po
 - `docker/docker-compose.yml`: runnable foundation development stack.
 - `docker/docker-compose.dev.yml`: optional developer overrides such as direct database/cache ports.
 - `docker/docker-compose.prod.yml`: secure reference production topology requiring real application image references.
+
+Every application build is context-scoped: Nuxt uses `frontend/`; API, worker, and migrate use the shared `backend/` application image from `backend/`. Root context builds are prohibited. See the measured [Docker optimization report](docs/docker-optimization.md).
 
 Start with extra development ports:
 
@@ -62,7 +64,7 @@ docker compose down
 
 | Service | Container port | Default host port | Purpose in foundation phase |
 |---|---:|---:|---|
-| frontend | 5173 | 5173 | Nuxt 4 development application |
+| frontend | 3000 | 5173 | Nuxt 4 development application |
 | backend | 8000 | 8000 | FastAPI application |
 | worker | none | none | Celery PDF processing worker |
 | postgres | 5432 | only in dev override | real development database |

@@ -62,7 +62,10 @@
           </div>
           <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
             <span class="text-xs font-semibold text-muted">Text stays inside your workspace history.</span>
-            <span class="button-primary !min-h-10 !px-4 text-sm">Translate text</span>
+            <NuxtLink
+              class="button-primary !min-h-10 !px-4 text-sm"
+              :to="$localePath('/register')"
+            >Translate text</NuxtLink>
           </div>
         </div>
       </div>

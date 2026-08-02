@@ -14,14 +14,14 @@
       {{ message }}
     </p>
     <button
-      class="rounded-lg px-2 py-1 text-sm font-black text-brand hover:bg-subtle"
+      class="ripple-control rounded-lg px-2 py-1 text-sm font-black text-brand hover:bg-subtle"
       type="button"
       @click="openSwitcher"
     >
       {{ $t('locale.change') }}
     </button>
     <button
-      class="grid size-9 shrink-0 place-items-center rounded-lg text-muted hover:bg-subtle hover:text-ink"
+      class="ripple-control grid size-9 shrink-0 place-items-center rounded-lg text-muted hover:bg-subtle hover:text-ink"
       type="button"
       :aria-label="$t('actions.dismiss')"
       @click="dismiss"
@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { Globe2, X } from 'lucide-vue-next'
+import { Globe2, X } from '@lucide/vue'
 import { defineComponent } from 'vue'
 import type { LanguageDetectionNotice } from '~/composables/useLanguageDetection'
 

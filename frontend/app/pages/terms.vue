@@ -6,7 +6,7 @@
       </p>
       <h1>Terms of service</h1>
       <div class="rounded-2xl border border-warning/30 bg-surface p-5 text-sm text-warning">
-        <strong>Draft—not effective.</strong> These terms are a product-planning draft and require legal review before public availability.
+        <strong>Draft-not effective.</strong> These terms are a product-planning draft and require legal review before public availability.
       </div>
       <h2>Phase 1 service</h2>
       <p>Aikya AI currently provides a limited MVP for text and supported digital PDF translation. Availability, language support, output quality, and processing time are not guaranteed.</p>

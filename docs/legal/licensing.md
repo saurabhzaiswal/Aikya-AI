@@ -1,6 +1,6 @@
 # Aikya AI Licensing
 
-Status: Proprietary — all rights reserved  
+Status: Proprietary - all rights reserved  
 Copyright owner: Saurabh Choudhary  
 Effective notice: See the repository root `LICENSE`
 

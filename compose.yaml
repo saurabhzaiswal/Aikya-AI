@@ -1,3 +1,4 @@
-# Root development entry point. Requires Docker Compose v2 with include support.
+# Root development entry point. It only orchestrates the modular Compose file;
+# application builds use frontend/ and backend/ contexts, never this directory.
 include:
   - path: ./docker/docker-compose.yml

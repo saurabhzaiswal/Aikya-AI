@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { Activity, Check, FileText, Languages, ShieldCheck } from 'lucide-vue-next'
+import { Activity, Check, FileText, Languages, ShieldCheck } from '@lucide/vue'
 import { PAGE_METADATA } from '~/seo/metadata'
 import { breadcrumbSchema } from '~/seo/schemas'
 

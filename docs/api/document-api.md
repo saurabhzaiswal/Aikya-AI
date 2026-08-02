@@ -1,4 +1,4 @@
-# Document API Contract — Phase 1
+# Document API Contract - Phase 1
 
 Base path: `/api/v1`
 

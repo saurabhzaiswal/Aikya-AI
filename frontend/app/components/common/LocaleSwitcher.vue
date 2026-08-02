@@ -35,7 +35,7 @@
           <button
             v-for="language in group.languages"
             :key="language.code"
-            class="flex min-h-12 items-center gap-3 rounded-xl px-3 py-2 text-left hover:bg-subtle"
+            class="ripple-control flex min-h-12 items-center gap-3 rounded-xl px-3 py-2 text-left hover:bg-subtle"
             :class="{ 'bg-brand/10 text-brand': currentLanguage.code === language.code }"
             type="button"
             :lang="language.language"
@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { Check, ChevronDown, Globe2 } from 'lucide-vue-next'
+import { Check, ChevronDown, Globe2 } from '@lucide/vue'
 import { defineComponent } from 'vue'
 import type { LanguageGroupView } from '~/composables/useLanguageDetection'
 import { findUiLanguage, type UiLanguage } from '~/i18n/language-registry'

@@ -23,10 +23,13 @@ Threat modeling follows trust boundaries shown in the architecture/deployment di
 
 - OAuth Authorization Code + PKCE with state, nonce, issuer, audience, redirect URI, and verified-email policy.
 - Local passwords use Argon2id with parameter review, breached-password defense, verification, and rate-limited generic errors.
+- Phase 1 passwords contain 8–128 characters and at least three of uppercase, lowercase, number, and symbol classes. This founder-selected minimum must remain synchronized across browser validation and the API boundary.
 - Short-lived access token in memory; rotating refresh token in Secure, HttpOnly, appropriately SameSite cookie, stored only as hash server-side.
 - Session family replay detection revokes the family and notifies the user.
 - CSRF protection on cookie-authenticated mutations; strict CORS allowlist.
 - Step-up authentication and MFA before high-impact organization/admin actions; MFA becomes user-facing before enterprise launch.
+
+Google sign-in is implemented behind runtime credentials using Authorization Code + PKCE, signed HttpOnly state, nonce, exact redirect validation, Google JWKS signature verification, and verified-email account linking. Microsoft, LinkedIn, Facebook, and X remain unimplemented and are not shown. WebAuthn passkey 2FA uses user verification, one-time database challenges, signature counters, and ten recovery codes stored only as keyed hashes. Google sign-in cannot bypass enabled Aikya MFA. Abuse-resistant account-reset and credential-revocation UX plus authentication audit events remain required before private beta.
 
 ## Authorization and tenancy
 
@@ -94,7 +97,7 @@ Use TLS for external/internal connections where supported. Managed encryption at
 
 Audit records capture actor, action, target ID/type, tenant, outcome, request ID, safe metadata, and timestamp. Authentication, membership, provider policy, retention, API key, billing, export/delete, and admin actions are audited.
 
-Operational logs contain IDs and safe codes—not names, emails where avoidable, text, filenames, tokens, signed URLs, or provider payloads. Error trackers scrub headers, body, query strings, breadcrumbs, and attachments.
+Operational logs contain IDs and safe codes-not names, emails where avoidable, text, filenames, tokens, signed URLs, or provider payloads. Error trackers scrub headers, body, query strings, breadcrumbs, and attachments.
 
 ## Security verification
 
@@ -109,7 +112,7 @@ Operational logs contain IDs and safe codes—not names, emails where avoidable,
 
 Maintain severity definitions, on-call contacts, evidence preservation, containment, customer/regulator communication decision paths, credential rotation, provider suspension, and post-incident review. Runbooks must cover account compromise, suspected cross-tenant access, exposed signed URL/key, malicious file, provider leak/outage, billing webhook fraud, and deletion backlog.
 
-## Phase 1 implementation status — 2026-08-01
+## Phase 1 implementation status - 2026-08-01
 
 Implemented controls include Argon2id password hashing, short-lived signed access tokens, hashed rotating HttpOnly refresh sessions with replay-family revocation, tenant checks on user resources, Redis-backed abuse limits, private randomized object keys, short-lived signed upload/download URLs, PDF signature/size/checksum/page/password checks, fail-closed clamd scanning before parsing, content-safe public errors, and no browser persistence for bearer tokens.
 

@@ -68,7 +68,7 @@ Regulated industries are target segments only after suitable contractual, securi
 
 ## Initial product wedge
 
-The launch wedge is a privacy-conscious web application for plain text, DOCX, digitally generated PDFs, images, and bounded scanned PDFs. It offers clear progress, quality warnings, a side-by-side result, and downloadable output. This scope proves the hardest differentiator—document fidelity—without spreading the team across every client.
+The launch wedge is a privacy-conscious web application for plain text, DOCX, digitally generated PDFs, images, and bounded scanned PDFs. It offers clear progress, quality warnings, a side-by-side result, and downloadable output. This scope proves the hardest differentiator-document fidelity-without spreading the team across every client.
 
 ## Positioning
 

@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { BookOpen } from 'lucide-vue-next'
+import { BookOpen } from '@lucide/vue'
 
 const { data: pages } = await useAsyncData('docs-list', () => queryCollection('docs').all())
 usePageSeo({ title: 'Documentation', description: 'User documentation for the Aikya AI Phase 1 translation workspace.' })

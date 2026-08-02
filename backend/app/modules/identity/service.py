@@ -34,7 +34,7 @@ def make_slug(display_name: str) -> str:
     return f"{stem}-{str(new_uuid7())[:8]}"
 
 
-def _build_auth_response(
+def build_auth_response(
     user: User, organization: Organization, workspace: Workspace
 ) -> AuthResponse:
     settings = get_settings()
@@ -51,7 +51,7 @@ def _build_auth_response(
     )
 
 
-def _create_session(
+def create_session(
     db: Session, user_id: UUID, family_id: UUID | None = None
 ) -> tuple[str, SessionRecord]:
     settings = get_settings()
@@ -67,50 +67,37 @@ def _create_session(
     return raw_token, record
 
 
-def register(
-    db: Session, email: str, password: str, display_name: str, locale: str = "en"
-) -> tuple[AuthResponse, str]:
-    normalized_email = normalize_email(email)
-    if db.scalar(select(User.id).where(User.email == normalized_email)) is not None:
-        raise AppError(
-            "email_unavailable", "An account cannot be created with this email.", status_code=409
-        )
-
+def create_personal_account(
+    db: Session,
+    *,
+    email: str,
+    display_name: str,
+    locale: str,
+    password_hash: str | None,
+) -> tuple[User, Organization, Workspace]:
     user = User(
-        email=normalized_email,
+        email=normalize_email(email),
         display_name=display_name.strip(),
-        password_hash=hash_password(password),
+        password_hash=password_hash,
         locale=locale.lower(),
     )
     organization = Organization(
         name=f"{display_name.strip()}'s Workspace", slug=make_slug(display_name)
     )
-    try:
-        db.add_all([user, organization])
-        db.flush()
-        membership = OrganizationMembership(
-            organization_id=organization.id, user_id=user.id, role="owner"
-        )
-        workspace = Workspace(
-            organization_id=organization.id, name="My Workspace", created_by=user.id
-        )
-        db.add_all([membership, workspace])
-        db.flush()
-        refresh_token, _ = _create_session(db, user.id)
-        response = _build_auth_response(user, organization, workspace)
-        db.commit()
-        return response, refresh_token
-    except IntegrityError as exc:
-        db.rollback()
-        raise AppError(
-            "email_unavailable", "An account cannot be created with this email.", status_code=409
-        ) from exc
+    db.add_all([user, organization])
+    db.flush()
+    membership = OrganizationMembership(
+        organization_id=organization.id, user_id=user.id, role="owner"
+    )
+    workspace = Workspace(
+        organization_id=organization.id, name="My Workspace", created_by=user.id
+    )
+    db.add_all([membership, workspace])
+    db.flush()
+    return user, organization, workspace
 
 
-def login(db: Session, email: str, password: str) -> tuple[AuthResponse, str]:
-    user = db.scalar(select(User).where(User.email == normalize_email(email)))
-    if user is None or not user.is_active or not verify_password(password, user.password_hash):
-        raise AppError("invalid_credentials", "Email or password is incorrect.", status_code=401)
+def load_account_context(db: Session, user: User) -> tuple[Organization, Workspace]:
     membership = db.scalar(
         select(OrganizationMembership).where(
             OrganizationMembership.user_id == user.id,
@@ -125,10 +112,59 @@ def login(db: Session, email: str, password: str) -> tuple[AuthResponse, str]:
     )
     if organization is None or workspace is None:
         raise AppError("account_unavailable", "This account is not available.", status_code=403)
-    refresh_token, _ = _create_session(db, user.id)
-    response = _build_auth_response(user, organization, workspace)
+    return organization, workspace
+
+
+def authenticate_local_user(db: Session, email: str, password: str) -> User:
+    user = db.scalar(select(User).where(User.email == normalize_email(email)))
+    if (
+        user is None
+        or not user.is_active
+        or user.password_hash is None
+        or not verify_password(password, user.password_hash)
+    ):
+        raise AppError("invalid_credentials", "Email or password is incorrect.", status_code=401)
+    return user
+
+
+def issue_session(
+    db: Session, user: User, organization: Organization, workspace: Workspace
+) -> tuple[AuthResponse, str]:
+    refresh_token, _ = create_session(db, user.id)
+    response = build_auth_response(user, organization, workspace)
     db.commit()
     return response, refresh_token
+
+
+def register(
+    db: Session, email: str, password: str, display_name: str, locale: str = "en"
+) -> tuple[AuthResponse, str]:
+    normalized_email = normalize_email(email)
+    if db.scalar(select(User.id).where(User.email == normalized_email)) is not None:
+        raise AppError(
+            "email_unavailable", "An account cannot be created with this email.", status_code=409
+        )
+
+    try:
+        user, organization, workspace = create_personal_account(
+            db,
+            email=normalized_email,
+            display_name=display_name,
+            locale=locale,
+            password_hash=hash_password(password),
+        )
+        return issue_session(db, user, organization, workspace)
+    except IntegrityError as exc:
+        db.rollback()
+        raise AppError(
+            "email_unavailable", "An account cannot be created with this email.", status_code=409
+        ) from exc
+
+
+def login(db: Session, email: str, password: str) -> tuple[AuthResponse, str]:
+    user = authenticate_local_user(db, email, password)
+    organization, workspace = load_account_context(db, user)
+    return issue_session(db, user, organization, workspace)
 
 
 def refresh(db: Session, raw_token: str) -> tuple[AuthResponse, str]:
@@ -163,10 +199,10 @@ def refresh(db: Session, raw_token: str) -> tuple[AuthResponse, str]:
     )
     if organization is None or workspace is None:
         raise AppError("invalid_refresh_token", "The session has expired.", status_code=401)
-    new_raw_token, new_record = _create_session(db, user.id, record.family_id)
+    new_raw_token, new_record = create_session(db, user.id, record.family_id)
     record.revoked_at = now
     record.replaced_by_id = new_record.id
-    response = _build_auth_response(user, organization, workspace)
+    response = build_auth_response(user, organization, workspace)
     db.commit()
     return response, new_raw_token
 

@@ -30,3 +30,4 @@ For every frontend change, review all lifecycle-producing APIs: `addEventListene
 
 The current PDF polling component owns one timeout, prevents overlapping timers, and clears it during `beforeUnmount`. New asynchronous UI must follow the same ownership pattern.
 
+The `v-wave` package was evaluated for project-wide button ripple effects on 2026-08-02. Its distributed Vue directive attaches pointer/click listeners without an explicit directive unmount hook, so it was not retained. Aikya uses CSS-only shared ripple classes instead; they allocate no component lifecycle resource and honor `prefers-reduced-motion`.

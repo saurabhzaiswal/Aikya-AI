@@ -26,7 +26,7 @@
         <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <NuxtLink
             class="button-primary"
-            to="/register"
+            :to="$localePath('/register')"
           >Create your workspace <ArrowRight
             :size="18"
             aria-hidden="true"
@@ -64,7 +64,7 @@
             One focused workspace
           </p>
           <h2 class="section-title mt-4">
-            Built for understanding—not feature noise.
+            Built for understanding-not feature noise.
           </h2>
           <p class="body-lead mt-5">
             Phase 1 concentrates on the two workflows that prove the product: text translation and readable digital PDF translation.
@@ -151,7 +151,7 @@
           </p>
           <NuxtLink
             class="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-on-brand px-5 font-black text-brand-strong hover:-translate-y-0.5"
-            to="/register"
+            :to="$localePath('/register')"
           >Create your workspace <ArrowRight :size="18" /></NuxtLink>
         </div>
       </div>
@@ -160,7 +160,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowRight, CheckCircle2, CircleGauge, FileText, Languages, LockKeyhole, ScanText, ShieldCheck, Sparkles } from 'lucide-vue-next'
+import { ArrowRight, CheckCircle2, CircleGauge, FileText, Languages, LockKeyhole, ScanText, ShieldCheck, Sparkles } from '@lucide/vue'
 
 import { PAGE_METADATA } from '~/seo/metadata'
 import { organizationSchema, softwareSchema } from '~/seo/schemas'

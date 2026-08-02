@@ -21,7 +21,7 @@ The editable primary journey is [`diagrams/user-flow.excalidraw`](diagrams/user-
 
 - Nuxt 4, Vue 3, TypeScript, Nuxt i18n, Tailwind CSS, SCSS, and accessible Reka UI/headless primitives.
 - Semantic design tokens for color, surface, text, border, focus, spacing, radius, shadow, typography, motion, and z-index.
-- Tokens—not raw color names—express roles: `surface-default`, `text-muted`, `action-primary`, `status-warning`.
+- Tokens-not raw color names-express roles: `surface-default`, `text-muted`, `action-primary`, `status-warning`.
 - Light and dark themes share semantic contrast goals; dark mode is not color inversion.
 - Script-aware font stacks and resilient line-height support Latin, Devanagari, Arabic, CJK, and other launch scripts.
 - An 8-point spacing rhythm with smaller 4-point increments for compact controls.
@@ -83,6 +83,12 @@ On mobile, navigation becomes a drawer or bottom set limited to primary destinat
 7. Completion leads to result preview, warnings, comparison, and export.
 8. User can save, delete, translate again, or review plan when limits justify it.
 
+## Authentication experience
+
+Login and registration use a responsive split-screen layout on large displays and a focused single-column form on small displays. Every field has an explicit label, useful placeholder, keyboard/autocomplete metadata, visible focus, `aria-invalid`, and a nearby error message. Registration mirrors the backend password contract with an 8–128 character checklist, three-of-four character-class requirement, confirmation field, and legal links.
+
+Request errors remain visible inline and are also announced through a bounded global toast viewport. Toasts do not auto-dismiss, create timers, or grow without limit. Authentication calls retain the existing rotating HttpOnly refresh session and memory-only access token model. Social sign-in controls appear only when a real provider flow is configured; planned providers are never presented as working actions.
+
 ## Critical state design
 
 - **Empty:** explain value and one next action.
@@ -124,6 +130,8 @@ Honor system preference initially and persist user override. Test every semantic
 - Dialog focus is trapped/restored correctly; toast content is available through persistent history when important.
 - Minimum contrast, zoom to 200%, responsive reflow, reduced motion, and screen-reader tests.
 - Language attributes change for source/translated passages; RTL direction is set at content container level.
+- Scrollbars use the centralized brand, brand-strong, and subtle design tokens with native Firefox and WebKit implementations; they remain visible, rounded, theme-aware, and do not hide overflow affordances.
+- Primary and secondary actions expose a pointer cursor, hover elevation, pressed scale, and CSS-only ripple feedback. Reduced-motion preferences disable ripple animation. Critical authentication CTAs use locale-aware `NuxtLink` targets, and login/register pages remain directly reachable instead of redirecting based on stale client auth state.
 
 ## SEO and rendering
 

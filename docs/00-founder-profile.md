@@ -2,7 +2,7 @@
 
 ## Founder
 
-Saurabh Choudhary — Founder and Solo Builder, Aikya AI.
+Saurabh Choudhary - Founder and Solo Builder, Aikya AI.
 
 ## Public profiles
 

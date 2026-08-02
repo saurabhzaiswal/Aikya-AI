@@ -5,16 +5,18 @@ services:
   frontend:
     build:
       context: ../frontend
+      dockerfile: Dockerfile
       target: development
+    image: aikya-frontend:development
     volumes:
       - ../frontend:/app
       - frontend-node-modules:/app/node_modules
     environment:
       NUXT_API_PROXY_TARGET: http://backend:8000
-      NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:-http://localhost:5173}
+      NUXT_PUBLIC_SITE_URL: ${NUXT_PUBLIC_SITE_URL:-http://localhost:3000}
       NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-}
     ports:
-      - "${FRONTEND_PORT:-5173}:5173"
+      - "${FRONTEND_PORT:-3000}:5173"
     depends_on:
       backend:
         condition: service_healthy
@@ -27,9 +29,11 @@ services:
     networks: [edge]
 
   backend:
-    build:
+    build: &backend-build
       context: ../backend
+      dockerfile: Dockerfile
       target: development
+    image: aikya-backend:development
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     env_file:
       - path: ../.env.example
@@ -56,9 +60,8 @@ services:
     networks: [edge, internal]
 
   worker:
-    build:
-      context: ../backend
-      target: development
+    build: *backend-build
+    image: aikya-backend:development
     command: ["celery", "-A", "app.worker:celery_app", "worker", "--loglevel=INFO"]
     env_file:
       - path: ../.env.example
@@ -82,12 +85,11 @@ services:
       retries: 5
       start_period: 30s
     restart: unless-stopped
-    networks: [internal]
+    networks: [internal, egress]
 
   migrate:
-    build:
-      context: ../backend
-      target: development
+    build: *backend-build
+    image: aikya-backend:development
     command: ["alembic", "upgrade", "head"]
     env_file:
       - path: ../.env.example
@@ -135,7 +137,7 @@ services:
     volumes:
       - clamav-data:/var/lib/clamav
     restart: unless-stopped
-    networks: [internal]
+    networks: [internal, egress]
 
   minio:
     image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
@@ -143,7 +145,7 @@ services:
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-aikya-local-access}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-development-only-storage-secret}
-      MINIO_API_CORS_ALLOW_ORIGIN: ${AIKYA_PUBLIC_URL:-http://localhost:5173}
+      MINIO_API_CORS_ALLOW_ORIGIN: ${AIKYA_PUBLIC_URL:-http://localhost:3000}
     volumes:
       - minio-data:/data
     ports:
@@ -185,6 +187,9 @@ services:
 
 networks:
   edge:
+  # Outbound-only path for provider calls and ClamAV signature updates.
+  # No service publishes a host port through this network.
+  egress:
   internal:
     internal: true
 

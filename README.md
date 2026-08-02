@@ -4,7 +4,7 @@
 
 Aikya AI is a privacy-first language-intelligence platform for translating and understanding documents, images, websites, and real-world text while preserving structure and context as much as the source format allows.
 
-This repository contains the implemented **Phase 1 MVP application** and its engineering foundation. The current web product supports secure local accounts, a personal dashboard, plain-text translation, and asynchronous translation of digital PDFs into a readable downloadable PDF. Docker/provider runtime acceptance and beta security work remain before release.
+This repository contains the implemented **Phase 1 MVP application** and its engineering foundation. The current web product supports secure local and Google accounts, optional WebAuthn passkey 2FA, a personal dashboard, plain-text translation, and asynchronous translation of digital PDFs into a readable downloadable PDF. Provider/runtime acceptance and beta security work remain before release.
 
 ## Vision
 
@@ -99,7 +99,7 @@ Detailed gates and estimates are in the [roadmap](docs/03-roadmap.md).
 
 ## Current status
 
-The Phase 1 backend and synthetic API/worker flows pass their existing checks. The Nuxt 4 migration passes lint and typecheck; client/SSR compilation, 31-route prerendering, and generated-server HTTP/SEO smoke checks pass. Final Nitro dependency tracing exceeded the local Windows build timeout, so container packaging remains open. Full Compose runtime, real-provider/MinIO/ClamAV integration, browser visual QA, automated suites, active deletion/retention, and the final security review also remain open; the repository is not production-ready.
+The Phase 1 backend and synthetic API/worker flows pass their existing checks. The Nuxt 4 migration passes lint and typecheck; client/SSR compilation, 31-route prerendering, generated-server HTTP/SEO checks, and optimized frontend/backend production image builds pass. The frontend container health endpoint returns HTTP 200 and the backend production image imports successfully. Full Compose runtime, real-provider/MinIO/ClamAV integration, browser visual QA, automated suites, active deletion/retention, and the final security review remain open; the repository is not production-ready.
 
 ## Founder
 

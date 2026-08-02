@@ -1,3 +1,10 @@
+import type {
+  AuthenticationResponseJSON,
+  PublicKeyCredentialCreationOptionsJSON,
+  PublicKeyCredentialRequestOptionsJSON,
+  RegistrationResponseJSON,
+} from '@simplewebauthn/browser'
+
 export interface User {
   id: string
   email: string
@@ -18,6 +25,42 @@ export interface AuthResponse {
   expires_in: number
   user: User
   context: UserContext
+}
+
+export interface WebAuthnRequiredResponse {
+  status: 'mfa_required'
+  challenge_id: string
+  options: PublicKeyCredentialRequestOptionsJSON
+}
+
+export type LoginResponse = AuthResponse | WebAuthnRequiredResponse
+
+export interface WebAuthnOptionsResponse {
+  challenge_id: string
+  options: PublicKeyCredentialCreationOptionsJSON
+}
+
+export interface WebAuthnVerifyRequest {
+  challenge_id: string
+  credential: RegistrationResponseJSON | AuthenticationResponseJSON
+}
+
+export interface WebAuthnRegistrationResponse {
+  credential_id: string
+  credential_name: string
+  recovery_codes: string[]
+}
+
+export interface WebAuthnCredentialSummary {
+  id: string
+  name: string
+  created_at: string
+  last_used_at: string | null
+}
+
+export interface WebAuthnStatusResponse {
+  enabled: boolean
+  credentials: WebAuthnCredentialSummary[]
 }
 
 export interface ApiErrorPayload {

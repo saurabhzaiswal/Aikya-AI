@@ -1,7 +1,9 @@
+# syntax=docker/dockerfile:1.7
+
 FROM node:24-alpine AS dependencies
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
 
 FROM dependencies AS development
 COPY . .
@@ -11,12 +13,15 @@ ENV PORT=5173
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
 
 FROM dependencies AS build
+ARG NUXT_PUBLIC_SITE_URL=https://example.invalid
+ENV NUXT_PUBLIC_SITE_URL=$NUXT_PUBLIC_SITE_URL
 COPY . .
 RUN npm run build
 
 FROM node:24-alpine AS production
 WORKDIR /app
 ENV NODE_ENV=production
+ENV NUXT_TELEMETRY_DISABLED=1
 ENV HOST=0.0.0.0
 ENV PORT=3000
 COPY --from=build --chown=node:node /app/.output ./.output

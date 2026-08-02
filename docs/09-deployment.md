@@ -28,6 +28,8 @@ All application images:
 - receive secrets at runtime;
 - carry version/commit metadata and produce an SBOM.
 
+Application builds use dedicated `frontend/` and `backend/` contexts with local `.dockerignore` policies; repository root is never a normal build context. The worker and migration roles reuse the same immutable backend image. Layer/context details and measured reductions are maintained in [`docker-optimization.md`](docker-optimization.md).
+
 ## Local Docker workflow
 
 From the repository root, `docker compose up` loads the Phase 1 development stack. It builds the Nuxt frontend and shared FastAPI/Celery backend image, runs migrations before application startup, creates private MinIO buckets, waits for PostgreSQL/Redis/storage health, and requires ClamAV to become healthy before workers accept PDF jobs.
@@ -46,7 +48,7 @@ Nginx routes `/api/` to the backend and other paths to the Nuxt Nitro frontend, 
 
 ## CI/CD pipeline
 
-The first repository CI implementation lives at `.github/workflows/ci.yml` and runs on pushes and pull requests to `master`. It uses Node.js 24.18.0 and Python 3.14, validates locked dependencies, lint/types/builds, migration heads, the UUIDv7 model policy, development Compose, and production container builds. It has read-only repository permissions and no deployment credentials. CD remains intentionally unimplemented.
+The first repository CI implementation lives at `.github/workflows/ci.yml` and runs on pushes and pull requests to `master`. It uses Node.js 24.18.0 and Python 3.14, validates locked dependencies, lint/types/builds, migration heads, the UUIDv7 model policy, development Compose, and production container builds. Docker Buildx persists independent GitHub cache scopes for the frontend and backend contexts. CI has read-only repository permissions and no deployment credentials. CD remains intentionally unimplemented.
 
 1. Lint, formatting, type checking, secret detection, and architecture-boundary validation.
 2. Unit, integration, contract, security, and bounded golden-document tests.

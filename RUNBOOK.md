@@ -10,6 +10,8 @@ This is the canonical operator guide for running Aikya AI locally and using the 
 
 Docker is the default because it also supplies PostgreSQL, Redis, MinIO, ClamAV, the Celery worker, and migrations consistently.
 
+Docker builds are intentionally scoped to `frontend/` and `backend/`; never run `docker build .`. Worker and migrate reuse the backend image with different commands. See [`docs/docker-optimization.md`](docs/docker-optimization.md) for the context audit and cache policy.
+
 ## Run locally on a laptop
 
 ### 1. Create local configuration
@@ -41,7 +43,7 @@ First startup can be slower while ClamAV initializes signatures and application 
 
 | Surface | URL |
 |---|---|
-| Nuxt application | `http://localhost:5173` |
+| Nuxt application | `http://localhost:3000` |
 | FastAPI documentation | `http://localhost:8000/api/docs` |
 | Backend readiness | `http://localhost:8000/health/ready` |
 | MinIO console | `http://localhost:9001` |
@@ -51,6 +53,25 @@ docker compose logs -f frontend backend worker
 ```
 
 Register a synthetic local account, translate short non-sensitive text, then upload a synthetic text-based PDF. A scanned PDF needs future OCR and is intentionally rejected in Phase 1.
+
+### Registry, ClamAV, and Docker Desktop recovery
+
+If Docker Hub reports an anonymous-token `TLS handshake timeout`, keep TLS verification enabled and retry the pinned pull separately:
+
+```powershell
+docker pull clamav/clamav:1.4_base
+docker compose pull --ignore-buildable
+docker compose up -d
+```
+
+ClamAV downloads its malware definitions on first start through the dedicated egress network and stores them in the named `clamav-data` volume. Follow initialization with:
+
+```powershell
+docker compose logs -f clamav
+docker compose ps
+```
+
+If Docker Desktop returns HTTP 500 for its Linux-engine API or even `docker ps` stops responding, restart Docker Desktop from its UI, wait for the engine to report ready, and run `docker compose up -d` again. Do not disable TLS, use `docker system prune`, or remove named volumes as a connectivity workaround.
 
 ### 4. Stop safely
 
@@ -88,7 +109,7 @@ The repository has CI but intentionally has no automatic deployment. `docker/doc
 For a local production rehearsal:
 
 ```powershell
-docker build --target production -t aikya-frontend:0.1.0 frontend
+docker build --target production --build-arg NUXT_PUBLIC_SITE_URL=https://your-real-domain.example -t aikya-frontend:0.1.0 frontend
 docker build --target production -t aikya-backend:0.1.0 backend
 ```
 
@@ -145,4 +166,3 @@ git push -u origin feature/<short-name>
 ```
 
 Open a pull request into `master`, require the Aikya CI checks to pass, then merge. Direct pushes to `master` also trigger CI, but branch protection is safer.
-

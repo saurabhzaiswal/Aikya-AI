@@ -1,4 +1,4 @@
-# Aikya AI Privacy Policy — Draft
+# Aikya AI Privacy Policy - Draft
 
 Status: Internal product draft; not yet effective  
 Owner: Saurabh Choudhary  

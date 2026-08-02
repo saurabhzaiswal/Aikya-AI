@@ -1,4 +1,4 @@
-# Translation API Contract — Phase 1
+# Translation API Contract - Phase 1
 
 Base path: `/api/v1/translation`
 

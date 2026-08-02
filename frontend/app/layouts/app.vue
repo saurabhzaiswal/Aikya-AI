@@ -38,7 +38,7 @@ export default defineComponent({
   methods: {
     async signOut(): Promise<void> {
       await useAuthStore().logout()
-      await navigateTo('/login')
+      await this.$router.replace(this.$localePath('/login'))
     },
   },
 })

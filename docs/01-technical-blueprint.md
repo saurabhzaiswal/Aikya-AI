@@ -1,9 +1,9 @@
-# Aikya AI — Technical Architecture and Development Blueprint
+# Aikya AI - Technical Architecture and Development Blueprint
 
 Status: Proposed for review  
 Version: 1.0  
 Date: 2026-08-01  
-Scope: Step 1 — architecture and planning only; no implementation
+Scope: Step 1 - architecture and planning only; no implementation
 
 ## 1. Executive decision
 
@@ -133,7 +133,7 @@ The API acknowledges document processing with `202 Accepted` and a durable job r
 
 ## 5. Backend module boundaries
 
-Each module owns its domain rules, tables, application use cases, and API routes. Modules may call another module only through its public application interface or domain events—never through the other module's repositories.
+Each module owns its domain rules, tables, application use cases, and API routes. Modules may call another module only through its public application interface or domain events-never through the other module's repositories.
 
 | Module | Owns | Does not own |
 |---|---|---|
@@ -611,7 +611,7 @@ Database changes use expand/migrate/contract. Deployments are rolling or blue/gr
 
 Estimates assume a focused team of approximately 3–5 experienced people. A solo developer learning the stack should expect roughly 4–6 months for a dependable private beta and 6–12 months for a polished broader product. Estimates must be recalibrated after the document-fidelity spikes.
 
-### Phase 0 — Product and technical validation (2–3 weeks)
+### Phase 0 - Product and technical validation (2–3 weeks)
 
 Deliverables:
 
@@ -624,7 +624,7 @@ Deliverables:
 
 Exit criteria: the team can quantify fidelity on representative files, estimate unit economics, and choose the first providers based on evidence. If PDF quality is inadequate, narrow the launch promise before building the platform around it.
 
-### Phase 1 — Platform foundation (2–3 weeks)
+### Phase 1 - Platform foundation (2–3 weeks)
 
 Deliverables:
 
@@ -636,7 +636,7 @@ Deliverables:
 
 Exit criteria: tenant isolation tests pass; an authorized user can upload a safe fixture, observe a durable no-op processing job, and have it expire/delete correctly.
 
-### Phase 2 — Text translation vertical slice (1–2 weeks)
+### Phase 2 - Text translation vertical slice (1–2 weeks)
 
 Deliverables:
 
@@ -647,7 +647,7 @@ Deliverables:
 
 Exit criteria: contract, retry, quota, privacy, and language tests pass; actual cost and latency are observable.
 
-### Phase 3 — DOCX pipeline (3–4 weeks)
+### Phase 3 - DOCX pipeline (3–4 weeks)
 
 Deliverables:
 
@@ -658,7 +658,7 @@ Deliverables:
 
 Exit criteria: agreed structural fidelity threshold passes across the benchmark matrix with no source mutation.
 
-### Phase 4 — PDF and OCR pipeline (4–6 weeks)
+### Phase 4 - PDF and OCR pipeline (4–6 weeks)
 
 Deliverables:
 
@@ -669,7 +669,7 @@ Deliverables:
 
 Exit criteria: separate digital/scanned quality thresholds pass; low-confidence output is clearly flagged; resource limits withstand adversarial fixtures.
 
-### Phase 5 — Beta product hardening (2–3 weeks)
+### Phase 5 - Beta product hardening (2–3 weeks)
 
 Deliverables:
 

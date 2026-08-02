@@ -1,7 +1,14 @@
 import tailwindcss from '@tailwindcss/vite'
 import { NUXT_I18N_LOCALES } from './app/i18n/language-registry'
 
-const publicSiteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:5173'
+const publicSiteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+const apiProxyOrigin = process.env.NUXT_API_PROXY_TARGET || 'http://localhost:8000'
+const apiProxyTarget = new URL('/api', apiProxyOrigin).toString()
+const publicSiteHostname = new URL(publicSiteUrl).hostname
+const siteEnvironment = process.env.AIKYA_ENV
+  || (['localhost', '127.0.0.1', '::1'].includes(publicSiteHostname)
+    ? 'development'
+    : process.env.NODE_ENV || 'production')
 const modules = [
   '@pinia/nuxt',
   '@vueuse/nuxt',
@@ -18,6 +25,12 @@ const modules = [
 export default defineNuxtConfig({
   modules,
   ssr: true,
+  components: [
+    { path: '~/components/common', pathPrefix: false },
+    { path: '~/components/features', pathPrefix: false },
+    { path: '~/components/layout', pathPrefix: false },
+    { path: '~/components/marketing', pathPrefix: false },
+  ],
   devtools: { enabled: false },
   app: {
     head: {
@@ -31,6 +44,7 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.scss', '~/assets/styles/tailwind.css'],
   site: {
     url: publicSiteUrl,
+    env: siteEnvironment,
     name: 'Aikya AI',
     description: 'Privacy-focused text and digital document translation.',
     defaultLocale: 'en',
@@ -54,14 +68,19 @@ export default defineNuxtConfig({
     '/privacy': { prerender: true },
     '/terms': { prerender: true },
     '/app/**': { ssr: false },
+    '/**/app/**': { ssr: false },
     '/login': { ssr: false },
     '/register': { ssr: false },
+    '/**/login': { ssr: false },
+    '/**/register': { ssr: false },
+    '/signup': { redirect: '/register' },
   },
   compatibilityDate: '2026-08-01',
   nitro: {
     devProxy: {
       '/api': {
-        target: process.env.NUXT_API_PROXY_TARGET || 'http://localhost:8000',
+        // Nitro removes the mounted /api prefix before forwarding.
+        target: apiProxyTarget,
         changeOrigin: true,
       },
     },
@@ -97,14 +116,15 @@ export default defineNuxtConfig({
     storesDirs: ['app/stores/**'],
   },
   robots: {
-    disallow: ['/app', '/app/**', '/login', '/register'],
+    disallow: ['/app', '/app/**', '/*/app', '/*/app/**', '/login', '/register', '/signup', '/*/login', '/*/register'],
   },
   shadcn: {
-    prefix: 'Ui',
+    // Barrel exports already use the Ui prefix (for example, UiCard).
+    prefix: '',
     componentDir: './app/components/ui',
   },
   sitemap: {
-    exclude: ['/app/**', '/login', '/register'],
+    exclude: ['/app/**', '/*/app/**', '/login', '/register', '/signup', '/*/login', '/*/register'],
     zeroRuntime: true,
   },
 })

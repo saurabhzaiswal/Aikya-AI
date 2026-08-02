@@ -99,7 +99,7 @@
         <h3 class="font-black">
           Translation
         </h3><button
-          class="text-link text-sm"
+          class="ripple-control rounded-lg px-2 py-1 text-link text-sm"
           type="button"
           @click="copyResult"
         >

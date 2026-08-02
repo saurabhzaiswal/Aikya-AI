@@ -11,7 +11,7 @@ Status: Foundation baseline
 
 ## Mission and personality
 
-Aikya makes information understandable regardless of language while respecting structure and privacy. The brand should feel intelligent, human, calm, trustworthy, accessible, and global—not futuristic for its own sake.
+Aikya makes information understandable regardless of language while respecting structure and privacy. The brand should feel intelligent, human, calm, trustworthy, accessible, and global-not futuristic for its own sake.
 
 ## Voice and tone
 
@@ -74,7 +74,7 @@ Show real multilingual work and document structure rather than abstract AI brain
 - Display source, target, provider/privacy mode, retention, and quality warnings consistently.
 - Use “source document” and “translated document,” not “input/output” in user copy.
 - Destructive actions name the affected resource and retention consequence.
-- AI actions are verbs—Explain, Summarize, Rewrite—and are visually distinct from Translate.
+- AI actions are verbs-Explain, Summarize, Rewrite-and are visually distinct from Translate.
 
 ## Required review before launch
 

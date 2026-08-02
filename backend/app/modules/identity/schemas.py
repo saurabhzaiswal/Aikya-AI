@@ -1,3 +1,4 @@
+from typing import Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
@@ -5,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 class RegisterRequest(BaseModel):
     email: EmailStr
-    password: str = Field(min_length=12, max_length=128)
+    password: str = Field(min_length=8, max_length=128)
     display_name: str = Field(min_length=2, max_length=120)
     locale: str = Field(default="en", min_length=2, max_length=35, pattern=r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 
@@ -56,6 +57,45 @@ class AuthResponse(BaseModel):
     expires_in: int
     user: UserResponse
     context: ContextResponse
+
+
+class WebAuthnRequiredResponse(BaseModel):
+    status: Literal["mfa_required"] = "mfa_required"
+    challenge_id: UUID
+    options: dict[str, Any]
+
+
+class WebAuthnOptionsResponse(BaseModel):
+    challenge_id: UUID
+    options: dict[str, Any]
+
+
+class WebAuthnVerifyRequest(BaseModel):
+    challenge_id: UUID
+    credential: dict[str, Any]
+
+
+class RecoveryCodeVerifyRequest(BaseModel):
+    challenge_id: UUID
+    recovery_code: str = Field(min_length=8, max_length=64)
+
+
+class WebAuthnRegistrationResponse(BaseModel):
+    credential_id: UUID
+    credential_name: str
+    recovery_codes: list[str]
+
+
+class WebAuthnCredentialResponse(BaseModel):
+    id: UUID
+    name: str
+    created_at: str
+    last_used_at: str | None
+
+
+class WebAuthnStatusResponse(BaseModel):
+    enabled: bool
+    credentials: list[WebAuthnCredentialResponse]
 
 
 class MeResponse(BaseModel):

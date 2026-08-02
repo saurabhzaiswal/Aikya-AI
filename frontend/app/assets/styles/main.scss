@@ -9,8 +9,29 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--aikya-color-canvas);
+  // scrollbar-color: var(--aikya-color-brand) var(--aikya-color-subtle);
+  // scrollbar-width: thin;
+  // background: var(--aikya-color-canvas);
 }
+
+// *::-webkit-scrollbar {
+//   width: 0.75rem;
+//   height: 0.75rem;
+// }
+
+// *::-webkit-scrollbar-track {
+//   background: var(--aikya-color-subtle);
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   border: 0.2rem solid var(--aikya-color-subtle);
+//   border-radius: 999px;
+//   background: var(--aikya-color-brand);
+// }
+
+// *::-webkit-scrollbar-thumb:hover {
+//   background: var(--aikya-color-brand-strong);
+// }
 
 body {
   min-width: 20rem;
@@ -32,6 +53,14 @@ body {
 
 button, a, input, select, textarea {
   transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+a[href], button:not(:disabled), [role='button'], summary {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 .page-shell {

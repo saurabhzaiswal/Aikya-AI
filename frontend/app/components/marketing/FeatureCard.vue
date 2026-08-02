@@ -28,7 +28,8 @@ import { defineComponent, type Component, type PropType } from 'vue'
 export default defineComponent({
   name: 'FeatureCard',
   props: {
-    icon: { type: Object as PropType<Component>, required: true },
+    // Vue components may be stateful objects or functional component functions.
+    icon: { type: [Object, Function] as PropType<Component>, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     note: { type: String, default: '' },

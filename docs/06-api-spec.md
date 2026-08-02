@@ -127,7 +127,7 @@ Return standard rate-limit information where supported and `429` with retry guid
 
 ## Webhook design for developer phase
 
-Webhooks contain event ID/type/version, creation time, organization/resource IDs, and safe status metadata—not document text or download URLs. Delivery uses HMAC signature with timestamp/replay window, exponential retries, stable event ID, endpoint disablement after sustained failure, and a delivery log. Consumers retrieve authorized details through the API.
+Webhooks contain event ID/type/version, creation time, organization/resource IDs, and safe status metadata-not document text or download URLs. Delivery uses HMAC signature with timestamp/replay window, exponential retries, stable event ID, endpoint disablement after sustained failure, and a delivery log. Consumers retrieve authorized details through the API.
 
 ## Compatibility and documentation
 

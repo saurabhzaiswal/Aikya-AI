@@ -89,7 +89,26 @@ jobs:
         uses: actions/checkout@v6
       - name: Validate development Compose
         run: docker compose --env-file .env.example config --quiet
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
       - name: Build production frontend image
-        run: docker build --target production --tag aikya-frontend:ci frontend
+        uses: docker/build-push-action@v7
+        with:
+          context: frontend
+          file: frontend/Dockerfile
+          target: production
+          load: true
+          tags: aikya-frontend:ci
+          build-args: NUXT_PUBLIC_SITE_URL=https://example.invalid
+          cache-from: type=gha,scope=aikya-frontend
+          cache-to: type=gha,mode=max,scope=aikya-frontend
       - name: Build production backend image
-        run: docker build --target production --tag aikya-backend:ci backend
+        uses: docker/build-push-action@v7
+        with:
+          context: backend
+          file: backend/Dockerfile
+          target: production
+          load: true
+          tags: aikya-backend:ci
+          cache-from: type=gha,scope=aikya-backend
+          cache-to: type=gha,mode=max,scope=aikya-backend

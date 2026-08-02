@@ -1,18 +1,18 @@
 # Founder Roadmap
 
-## Year 1 — Build and validate
+## Year 1 - Build and validate
 
 Goal: deliver an honest, reliable MVP and validate repeated user demand.
 
 Focus on text/document translation, digital PDF and DOCX quality, bounded OCR, a focused resume workflow, and a browser extension only after the web pipeline is stable. Avoid broad AI features, enterprise complexity, microservices, and multiple native clients.
 
-## Year 2 — Grow the SaaS
+## Year 2 - Grow the SaaS
 
 Goal: improve retention and build repeatable revenue.
 
 Potential additions: organizations/teams, billing, developer API, shared terminology, measured format expansion, mobile workflow, and operational automation. Sequence depends on usage and unit economics.
 
-## Year 3 — Enterprise platform
+## Year 3 - Enterprise platform
 
 Goal: serve customers needing governance and private operation.
 

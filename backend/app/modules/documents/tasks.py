@@ -54,7 +54,7 @@ def render_readable_pdf(page_translations: list[str], target_language: str) -> b
             page = output.new_page(width=595, height=842)
             heading = f"Translated page {source_page}"
             if part > 1:
-                heading += f" — continued {part}"
+                heading += f" - continued {part}"
             content = (
                 f"<h2>{html.escape(heading)}</h2>"
                 f'<p lang="{html.escape(target_language)}">'

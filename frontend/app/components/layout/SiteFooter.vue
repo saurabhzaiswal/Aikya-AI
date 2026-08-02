@@ -12,18 +12,18 @@
           {{ $t('footer.product') }}
         </p>
         <div class="mt-4 grid gap-3 text-sm text-muted">
-          <NuxtLinkLocale to="/features">
+          <NuxtLink :to="$localePath('/features')">
             {{ $t('nav.features') }}
-          </NuxtLinkLocale>
-          <NuxtLinkLocale to="/pricing">
+          </NuxtLink>
+          <NuxtLink :to="$localePath('/pricing')">
             {{ $t('nav.pricing') }}
-          </NuxtLinkLocale>
-          <NuxtLinkLocale to="/docs">
+          </NuxtLink>
+          <NuxtLink :to="$localePath('/docs')">
             {{ $t('nav.docs') }}
-          </NuxtLinkLocale>
-          <NuxtLinkLocale to="/contact">
+          </NuxtLink>
+          <NuxtLink :to="$localePath('/contact')">
             {{ $t('nav.contact') }}
-          </NuxtLinkLocale>
+          </NuxtLink>
         </div>
       </div>
       <div>
@@ -31,12 +31,12 @@
           {{ $t('footer.legal') }}
         </p>
         <div class="mt-4 grid gap-3 text-sm text-muted">
-          <NuxtLinkLocale to="/privacy">
+          <NuxtLink :to="$localePath('/privacy')">
             {{ $t('nav.privacy') }}
-          </NuxtLinkLocale>
-          <NuxtLinkLocale to="/terms">
+          </NuxtLink>
+          <NuxtLink :to="$localePath('/terms')">
             {{ $t('nav.terms') }}
-          </NuxtLinkLocale>
+          </NuxtLink>
           <a
             href="https://github.com/saurabhzaiswal"
             rel="me noopener"
