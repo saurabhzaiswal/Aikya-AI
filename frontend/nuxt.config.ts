@@ -84,7 +84,7 @@ export default defineNuxtConfig({
     '/privacy': { prerender: true },
     '/terms': { prerender: true },
     '/app/**': { ssr: false, headers: privateRouteHeaders },
-    '/**/app/**': { ssr: false, headers: privateRouteHeaders },
+    // '/**/app/**': { ssr: false, headers: privateRouteHeaders },
     '/login': { ssr: false, headers: privateRouteHeaders },
     '/register': { ssr: false, headers: privateRouteHeaders },
     '/**/login': { ssr: false, headers: privateRouteHeaders },
